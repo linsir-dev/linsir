@@ -26,6 +26,7 @@
       <module>linsir-bom</module>
       <module>linsir-core-db</module>
       <module>linsir-core-auto</module>
+      <module>linsir-core-launch</module>
     </modules>
 
   <dependencyManagement>
@@ -87,6 +88,11 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <distributionManagement>
     <site>
@@ -124,6 +130,18 @@
           <compilerArgs>
             <arg>-parameters</arg>
           </compilerArgs>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.hibernate.validator</groupId>
+              <artifactId>hibernate-validator-annotation-processor</artifactId>
+              <version>6.0.13.Final</version>
+            </path>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.30</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
       <!-- 打jar包 -->

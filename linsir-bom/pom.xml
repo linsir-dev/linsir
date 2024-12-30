@@ -25,15 +25,38 @@
     <properties>
         <linsir.version>1.2.0</linsir.version>
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
+        <disruptor.version>4.0.0</disruptor.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+            <!--linsir-->
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-bom</artifactId>
+                <version>${linsir.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-auto</artifactId>
+                <version>${linsir.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-launch</artifactId>
+                <version>${linsir.version}</version>
+            </dependency>
+            <!-- end linsir-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

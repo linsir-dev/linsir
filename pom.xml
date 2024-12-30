@@ -27,6 +27,7 @@
       <module>linsir-core-db</module>
       <module>linsir-core-auto</module>
       <module>linsir-core-launch</module>
+      <module>linsir-core-log4j2</module>
     </modules>
 
   <dependencyManagement>
@@ -70,6 +71,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>

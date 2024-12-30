@@ -7,10 +7,10 @@
         <version>1.2.0</version>
     </parent>
 
-    <artifactId>linsir-core-launch</artifactId>
+    <artifactId>linsir-core-log4j2</artifactId>
     <packaging>jar</packaging>
 
-    <name>linsir-core-launch</name>
+    <name>linsir-core-log4j2</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,12 +19,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core-auto</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.linsir</groupId>
+            <artifactId>linsir-core-launch</artifactId>
         </dependency>
     </dependencies>
 </project>

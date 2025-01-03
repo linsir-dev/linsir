@@ -28,6 +28,10 @@
       <module>linsir-core-auto</module>
       <module>linsir-core-launch</module>
       <module>linsir-core-log4j2</module>
+      <module>linsir-core-boot</module>
+      <module>linsir-core-knife4j</module>
+      <module>linsir-core-tool</module>
+        <module>linsir-core-log</module>
     </modules>
 
   <dependencyManagement>
@@ -78,23 +82,24 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>

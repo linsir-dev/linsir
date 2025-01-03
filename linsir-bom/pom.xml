@@ -26,6 +26,7 @@
         <linsir.version>1.2.0</linsir.version>
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
+        <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
     </properties>
 
 
@@ -57,6 +58,11 @@
                 <groupId>com.lmax</groupId>
                 <artifactId>disruptor</artifactId>
                 <version>${disruptor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

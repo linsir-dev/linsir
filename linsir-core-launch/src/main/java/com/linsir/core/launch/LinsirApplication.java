@@ -2,6 +2,7 @@ package com.linsir.core.launch;
 
 import com.linsir.core.launch.constant.AppConstant;
 import com.linsir.core.launch.service.LauncherService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.*;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
  * @Date: 2023-12-19 03:15
  */
 
+@Slf4j
 public class LinsirApplication {
 
 
@@ -100,7 +102,7 @@ public class LinsirApplication {
                 .forEach(launcherService -> launcherService.launcher(builder, appName, profile, isLocalDev()));
 
         props.forEach((k,v)->{
-            System.out.println(k.toString()+":"+v.toString());
+            log.info("----属性props---[{}]:{}",k.toString(),v.toString());
         });
         return builder;
     }

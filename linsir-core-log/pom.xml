@@ -18,11 +18,11 @@
     </properties>
 
     <dependencies>
+        <!-- Auto -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>com.linsir</groupId>
+            <artifactId>linsir-core-launch</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -24,9 +24,16 @@
 
     <properties>
         <linsir.version>1.2.0</linsir.version>
+        <linsir-bom.version>1.2.0</linsir-bom.version>
+        <linsir-core-auto.version>1.2.0</linsir-core-auto.version>
+        <linsir-core-launch.version>1.2.0</linsir-core-launch.version>
+        <linsir-core-tool.version>1.2.0</linsir-core-tool.version>
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
         <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
+        <guava.version>26.0-jre</guava.version>
+        <protostuff-core.version>1.6.0</protostuff-core.version>
+        <protostuff-runtime.version>1.6.0</protostuff-runtime.version>
     </properties>
 
 
@@ -36,17 +43,22 @@
             <dependency>
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-bom</artifactId>
-                <version>${linsir.version}</version>
+                <version>${linsir-bom.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-core-auto</artifactId>
-                <version>${linsir.version}</version>
+                <version>${linsir-core-auto.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-core-launch</artifactId>
-                <version>${linsir.version}</version>
+                <version>${linsir-core-launch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-tool</artifactId>
+                <version>${linsir-core-tool.version}</version>
             </dependency>
             <!-- end linsir-->
             <dependency>
@@ -63,6 +75,22 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <!-- protostuff -->
+            <dependency>
+                <groupId>io.protostuff</groupId>
+                <artifactId>protostuff-core</artifactId>
+                <version>${protostuff-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.protostuff</groupId>
+                <artifactId>protostuff-runtime</artifactId>
+                <version>${protostuff-runtime.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

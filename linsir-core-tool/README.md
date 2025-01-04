@@ -1,6 +1,6 @@
-### linsir-core-log  1.2.0
+### linsir-core-tool     1.2.0
 ### 功能
-1. 日志
+1. 工具箱
 
 ### 规划
 1. 暂无

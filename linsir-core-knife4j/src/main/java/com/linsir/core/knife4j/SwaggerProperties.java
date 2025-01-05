@@ -18,9 +18,9 @@
  */
 package com.linsir.core.knife4j;
 
+import com.linsir.core.launch.constant.AppConstant;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.linsir.core.launch.constant.AppConstant;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
@@ -32,8 +32,8 @@ import java.util.List;
  *
  * @author Chill
  */
-@Data
 @ConfigurationProperties("swagger")
+@Data
 public class SwaggerProperties {
 	/**
 	 * swagger会解析的包路径
@@ -50,7 +50,7 @@ public class SwaggerProperties {
 	/**
 	 * 标题
 	 **/
-	private String title = "Linsir 接口文档系统";
+	private String title = "Linsir 接口文档系统 默认名称";
 	/**
 	 * 描述
 	 **/
@@ -100,7 +100,7 @@ public class SwaggerProperties {
 		/**
 		 * 联系人email
 		 **/
-		private String email = "student_yxl@126.com";
+		private String email = "Linsir@163.com";
 
 	}
 

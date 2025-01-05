@@ -23,14 +23,17 @@
     </distributionManagement>
 
     <properties>
+        <!--linsir-core-->
         <linsir.version>1.2.0</linsir.version>
         <linsir-bom.version>1.2.0</linsir-bom.version>
         <linsir-core-auto.version>1.2.0</linsir-core-auto.version>
         <linsir-core-launch.version>1.2.0</linsir-core-launch.version>
         <linsir-core-tool.version>1.2.0</linsir-core-tool.version>
+        <linsir-core-knife4j.version>1.2.0</linsir-core-knife4j.version>
+
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
-        <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
+        <knife4j-openapi3-jakarta-spring-boot-starter.version>4.5.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
         <guava.version>26.0-jre</guava.version>
         <protostuff-core.version>1.6.0</protostuff-core.version>
         <protostuff-runtime.version>1.6.0</protostuff-runtime.version>
@@ -60,6 +63,11 @@
                 <artifactId>linsir-core-tool</artifactId>
                 <version>${linsir-core-tool.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-knife4j</artifactId>
+                <version>${linsir-core-knife4j.version}</version>
+            </dependency>
             <!-- end linsir-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -73,8 +81,8 @@
             </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j-spring-boot-starter.version}</version>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j-openapi3-jakarta-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>

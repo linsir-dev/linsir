@@ -1,0 +1,11 @@
+#swagger公共信息
+swagger:
+  title: Linsir 接口文档系统222222222222222
+  description: Linsir 接口文档系统
+  license: Powered By Linsir
+  license-url: https://Linsir.vip
+  terms-of-service-url: https://Linsir.vip
+  contact:
+    name: Linsir
+    email: Linsir@163.com
+    url: https://gitee.com/Linsir

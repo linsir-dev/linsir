@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/linsir-cloud-bom/pom.xml" />
         <option value="$PROJECT_DIR$/linsir-cloud/pom.xml" />
         <option value="$PROJECT_DIR$/linsir-starter-knife4j/pom.xml" />
+        <option value="$PROJECT_DIR$/linsir.core.auth/pom.xml" />
       </set>
     </option>
   </component>

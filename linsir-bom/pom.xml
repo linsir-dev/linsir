@@ -30,6 +30,9 @@
         <linsir-core-launch.version>1.2.0</linsir-core-launch.version>
         <linsir-core-tool.version>1.2.0</linsir-core-tool.version>
         <linsir-core-knife4j.version>1.2.0</linsir-core-knife4j.version>
+        <linsir-core.version>1.2.0</linsir-core.version>
+        <linsir-core-jwt.version>1.2.0</linsir-core-jwt.version>
+        <linsir-core-auth.version>1.2.0</linsir-core-auth.version>
 
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
@@ -37,6 +40,10 @@
         <guava.version>26.0-jre</guava.version>
         <protostuff-core.version>1.6.0</protostuff-core.version>
         <protostuff-runtime.version>1.6.0</protostuff-runtime.version>
+        <sa-token-jwt.version>1.39.0</sa-token-jwt.version>
+        <sa-token-redis-jackson.version>1.39.0</sa-token-redis-jackson.version>
+        <spring-cloud-starter-netflix-hystrix.version>2.2.5.RELEASE</spring-cloud-starter-netflix-hystrix.version>
+        <feign-okhttp.version>13.2.1</feign-okhttp.version>
     </properties>
 
 
@@ -68,6 +75,22 @@
                 <artifactId>linsir-core-knife4j</artifactId>
                 <version>${linsir-core-knife4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core</artifactId>
+                <version>${linsir-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-jwt</artifactId>
+                <version>${linsir-core-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-auth</artifactId>
+                <version>${linsir-core-auth.version}</version>
+            </dependency>
+
             <!-- end linsir-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -85,6 +108,17 @@
                 <version>${knife4j-openapi3-jakarta-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${spring-cloud-starter-netflix-hystrix.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>${feign-okhttp.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
@@ -99,6 +133,16 @@
                 <groupId>io.protostuff</groupId>
                 <artifactId>protostuff-runtime</artifactId>
                 <version>${protostuff-runtime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${sa-token-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
+                <version>${sa-token-redis-jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

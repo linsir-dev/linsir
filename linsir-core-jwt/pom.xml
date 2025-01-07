@@ -7,10 +7,10 @@
         <version>1.2.0</version>
     </parent>
 
-    <artifactId>linsir-core-auto</artifactId>
+    <artifactId>linsir-core-jwt</artifactId>
     <packaging>jar</packaging>
 
-    <name>linsir-core-auto</name>
+    <name>linsir-core-jwt</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,8 +19,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core</artifactId>
+        <groupId>cn.dev33</groupId>
+        <artifactId>sa-token-jwt</artifactId>
+        </dependency>
+        <!-- Sa-Token 整合 Redis （使用 jackson 序列化方式） -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-redis-jackson</artifactId>
         </dependency>
     </dependencies>
 </project>

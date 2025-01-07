@@ -7,10 +7,10 @@
         <version>1.2.0</version>
     </parent>
 
-    <artifactId>linsir-core-auto</artifactId>
+    <artifactId>linsir-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>linsir-core-auto</name>
+    <name>linsir-core</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -18,9 +18,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core</artifactId>
-        </dependency>
+
     </dependencies>
 </project>

@@ -32,7 +32,6 @@
       <module>linsir-core-log4j2</module>
       <module>linsir-core-boot</module>
       <module>linsir-core-knife4j</module>
-      <module>linsir-core-tool</module>
       <module>linsir-core-log</module>
       <module>linsir-core-cloud</module>
       <module>linsir-core-jwt</module>

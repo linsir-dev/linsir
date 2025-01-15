@@ -71,21 +71,25 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-httpclient</artifactId>
-            <version>13.2.1</version>
         </dependency>
-        <!-- Auto -->
+        <!-- Admin -->
         <dependency>
-            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core-auto</artifactId>
-            <scope>provided</scope>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <!-- Actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- Sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
         <dependency>
             <groupId>com.linsir</groupId>
             <artifactId>linsir-core-auth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core-tool</artifactId>
         </dependency>
     </dependencies>
 

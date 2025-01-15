@@ -33,6 +33,7 @@
         <linsir-core.version>1.2.0</linsir-core.version>
         <linsir-core-jwt.version>1.2.0</linsir-core-jwt.version>
         <linsir-core-auth.version>1.2.0</linsir-core-auth.version>
+        <linsir-core-cloud.version>1.2.0</linsir-core-cloud.version>
 
         <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
@@ -44,6 +45,14 @@
         <sa-token-redis-jackson.version>1.39.0</sa-token-redis-jackson.version>
         <spring-cloud-starter-netflix-hystrix.version>2.2.5.RELEASE</spring-cloud-starter-netflix-hystrix.version>
         <feign-okhttp.version>13.2.1</feign-okhttp.version>
+        <feign-httpclient.version>13.2.1</feign-httpclient.version>
+        <spring-boot-admin-starter-client.version>3.4.1</spring-boot-admin-starter-client.version>
+        <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <mybatis-plus-spring-boot3-starter.version>3.5.4</mybatis-plus-spring-boot3-starter.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <jsqlparser.version>5.1</jsqlparser.version>
     </properties>
 
 
@@ -90,7 +99,11 @@
                 <artifactId>linsir-core-auth</artifactId>
                 <version>${linsir-core-auth.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-cloud</artifactId>
+                <version>${linsir-core-cloud.version}</version>
+            </dependency>
             <!-- end linsir-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -112,11 +125,15 @@
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>${spring-cloud-starter-netflix-hystrix.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-okhttp</artifactId>
                 <version>${feign-okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>${feign-httpclient.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -143,6 +160,41 @@
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-redis-jackson</artifactId>
                 <version>${sa-token-redis-jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin-starter-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus-spring-boot3-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

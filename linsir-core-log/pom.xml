@@ -24,5 +24,9 @@
             <artifactId>linsir-core-launch</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.linsir</groupId>
+            <artifactId>linsir-core-cloud</artifactId>
+        </dependency>
     </dependencies>
 </project>

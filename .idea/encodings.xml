@@ -3,10 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/linsir-bom/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-bom/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-cloud-bom/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-cloud-bom/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-cloud/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-cloud/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-auto/src/main/java" charset="UTF-8" />
@@ -31,10 +27,6 @@
     <file url="file://$PROJECT_DIR$/linsir-core-tool/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-starter-knife4j/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir-starter-knife4j/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir.core.auth/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/linsir.core.auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

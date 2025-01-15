@@ -1,21 +1,29 @@
+
 package com.linsir.core.exception;
+
+
+import com.linsir.core.util.S;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author: linsir
- * @date: 2022/3/21 10:43
- * @description: 无效使用异常类 InvalidUsageException
+ * 无效使用异常类 InvalidUsageException
+ *
+ * @author : wind
+ * @version : v2.3.1
+ * @date 2021/08/23
  */
-public class InvalidUsageException extends RuntimeException{
+public class InvalidUsageException extends RuntimeException {
+    private static final long serialVersionUID = -1203618387183809985L;
+
     /**
      * 自定义内容提示
      *
      * @param msg
      */
-    public InvalidUsageException(String msg) {
-        super(msg);
+    public InvalidUsageException(String msg, Object... args) {
+        super(S.format(msg, args));
     }
 
     /**
@@ -23,8 +31,8 @@ public class InvalidUsageException extends RuntimeException{
      *
      * @param msg
      */
-    public InvalidUsageException(String msg, Throwable ex) {
-        super(msg, ex);
+    public InvalidUsageException(Throwable ex, String msg, Object... args) {
+        super(S.format(msg, args), ex);
     }
 
     /**
@@ -42,4 +50,5 @@ public class InvalidUsageException extends RuntimeException{
     private int getCode() {
         return 5005;
     }
+
 }

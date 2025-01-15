@@ -9,10 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/linsir-cloud-bom/pom.xml" />
-        <option value="$PROJECT_DIR$/linsir-cloud/pom.xml" />
-        <option value="$PROJECT_DIR$/linsir-starter-knife4j/pom.xml" />
-        <option value="$PROJECT_DIR$/linsir.core.auth/pom.xml" />
+        <option value="$PROJECT_DIR$/linsir-core-tool/pom.xml" />
       </set>
     </option>
   </component>

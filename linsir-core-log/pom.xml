@@ -28,5 +28,9 @@
             <groupId>com.linsir</groupId>
             <artifactId>linsir-core-cloud</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.linsir</groupId>
+            <artifactId>linsir-core-auth</artifactId>
+        </dependency>
     </dependencies>
 </project>

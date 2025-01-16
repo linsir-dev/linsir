@@ -37,6 +37,7 @@
       <module>linsir-core-jwt</module>
       <module>linsir-core</module>
       <module>linsir-core-auth</module>
+        <module>linsir-core-mybatis</module>
     </modules>
 
   <dependencyManagement>

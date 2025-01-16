@@ -23,6 +23,8 @@
     <file url="file://$PROJECT_DIR$/linsir-core-log/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-log4j2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-log4j2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/linsir-core-mybatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/linsir-core-mybatis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-tool/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core-tool/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/linsir-core/src/main/java" charset="UTF-8" />

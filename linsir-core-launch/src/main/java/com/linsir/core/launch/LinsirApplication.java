@@ -91,19 +91,18 @@ public class LinsirApplication {
         props.setProperty("spring.cloud.nacos.config.file-extension", NacosConstant.NACOS_CONFIG_FORMAT);
         props.setProperty("spring.cloud.alibaba.seata.tx-service-group", appName.concat(NacosConstant.NACOS_GROUP_SUFFIX));*/
 
-
-
-
+        props.forEach((k,v)->{
+            log.info("----属性props---[{}]:{}",k.toString(),v.toString());
+        });
 
         // 加载自定义组件
         List<LauncherService> launcherList = new ArrayList<>();
+
         ServiceLoader.load(LauncherService.class).forEach(launcherList::add);
         launcherList.stream().sorted(Comparator.comparing(LauncherService::getOrder)).collect(Collectors.toList())
                 .forEach(launcherService -> launcherService.launcher(builder, appName, profile, isLocalDev()));
 
-        props.forEach((k,v)->{
-            log.info("----属性props---[{}]:{}",k.toString(),v.toString());
-        });
+
         return builder;
     }
 

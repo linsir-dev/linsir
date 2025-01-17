@@ -31,6 +31,7 @@
         <linsir-core-tool.version>1.2.0</linsir-core-tool.version>
         <linsir-core-knife4j.version>1.2.0</linsir-core-knife4j.version>
         <linsir-core.version>1.2.0</linsir-core.version>
+        <linsir-core-db.version>1.2.0</linsir-core-db.version>
         <linsir-core-jwt.version>1.2.0</linsir-core-jwt.version>
         <linsir-core-auth.version>1.2.0</linsir-core-auth.version>
         <linsir-core-cloud.version>1.2.0</linsir-core-cloud.version>
@@ -53,6 +54,7 @@
         <mybatis-plus-spring-boot3-starter.version>3.5.4</mybatis-plus-spring-boot3-starter.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <jsqlparser.version>5.1</jsqlparser.version>
+        <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
     </properties>
 
 
@@ -88,6 +90,11 @@
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-core</artifactId>
                 <version>${linsir-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-db</artifactId>
+                <version>${linsir-core-db.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.linsir</groupId>
@@ -195,6 +202,11 @@
                 <groupId>com.github.jsqlparser</groupId>
                 <artifactId>jsqlparser</artifactId>
                 <version>${jsqlparser.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector-j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

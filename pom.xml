@@ -9,8 +9,8 @@
   <packaging>pom</packaging>
 
   <properties>
-    <!--升级到jdk版本到21-->
-    <java.version>21</java.version>
+    <!--升级到jdk版本到17-->
+    <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -19,6 +19,14 @@
     <spring.cloud.version>2023.0.1</spring.cloud.version>
     <spring.boot.version>3.2.4</spring.boot.version>
     <!--Spring Cloud Starter Netflix Hystrix-->
+
+    <hibernate-validator-annotation-processor.version>8.0.2.Final</hibernate-validator-annotation-processor.version>
+    <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
+    <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+    <maven-compiler-plugin.verion>3.9.0</maven-compiler-plugin.verion>
+    <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+    <maven-project-info-reports-plugin.version>3.4.0</maven-project-info-reports-plugin.version>
+    <lombok.version>1.18.36</lombok.version>
 
   </properties>
 
@@ -37,7 +45,7 @@
       <module>linsir-core-jwt</module>
       <module>linsir-core</module>
       <module>linsir-core-auth</module>
-        <module>linsir-core-mybatis</module>
+      <module>linsir-core-mybatis</module>
     </modules>
 
   <dependencyManagement>
@@ -95,15 +103,16 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
-    <!--<dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
+      <version>${lombok.version}</version>
     </dependency>
   </dependencies>
   <distributionManagement>
@@ -146,7 +155,7 @@
             <path>
               <groupId>org.hibernate.validator</groupId>
               <artifactId>hibernate-validator-annotation-processor</artifactId>
-              <version>6.0.13.Final</version>
+              <version>${hibernate-validator-annotation-processor.version}</version>
             </path>
             <path>
               <groupId>org.projectlombok</groupId>
@@ -167,16 +176,41 @@
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${compiler.verion}</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+            <encoding>UTF-8</encoding>
+            <compilerArgs>
+              <arg>-parameters</arg>
+            </compilerArgs>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator-annotation-processor</artifactId>
+                <version>${hibernate-validator-annotation-processor.version}</version>
+              </path>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </path>
+            </annotationProcessorPaths>
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.0</version>
+          <version>${maven-clean-plugin.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.9.0</version>
+          <version>${maven-site-plugin.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.4.0</version>
+          <version>${maven-project-info-reports-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -185,7 +219,6 @@
 
   <reporting>
     <plugins>
-
     </plugins>
   </reporting>
 

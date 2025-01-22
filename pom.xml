@@ -46,6 +46,7 @@
       <module>linsir-core</module>
       <module>linsir-core-auth</module>
       <module>linsir-core-mybatis</module>
+        <module>linsir-core-tool</module>
     </modules>
 
   <dependencyManagement>
@@ -151,18 +152,6 @@
           <compilerArgs>
             <arg>-parameters</arg>
           </compilerArgs>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.hibernate.validator</groupId>
-              <artifactId>hibernate-validator-annotation-processor</artifactId>
-              <version>${hibernate-validator-annotation-processor.version}</version>
-            </path>
-            <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>1.18.30</version>
-            </path>
-          </annotationProcessorPaths>
         </configuration>
       </plugin>
       <!-- 打jar包 -->
@@ -186,18 +175,6 @@
             <compilerArgs>
               <arg>-parameters</arg>
             </compilerArgs>
-            <annotationProcessorPaths>
-              <path>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator-annotation-processor</artifactId>
-                <version>${hibernate-validator-annotation-processor.version}</version>
-              </path>
-              <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-              </path>
-            </annotationProcessorPaths>
           </configuration>
         </plugin>
         <plugin>

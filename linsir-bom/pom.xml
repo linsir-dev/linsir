@@ -36,7 +36,7 @@
         <linsir-core-auth.version>1.2.0</linsir-core-auth.version>
         <linsir-core-cloud.version>1.2.0</linsir-core-cloud.version>
 
-        <druid-spring-boot-starter.version>1.2.24</druid-spring-boot-starter.version>
+        <druid-spring-boot-3-starter.version>1.2.24</druid-spring-boot-3-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
         <knife4j-openapi3-jakarta-spring-boot-starter.version>4.5.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
         <guava.version>26.0-jre</guava.version>
@@ -114,8 +114,8 @@
             <!-- end linsir-->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid-spring-boot-starter.version}</version>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
+                <version>${druid-spring-boot-3-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.lmax</groupId>

@@ -8,7 +8,7 @@ package com.linsir.core.tool.code;
  * @modified By：
  * @version: 0.0.1
  */
-public enum BaseCode implements ICode,Cloneable{
+public enum ResultCode implements ICode,Cloneable{
     
     /*成功返回的代码*/
 
@@ -96,7 +96,7 @@ public enum BaseCode implements ICode,Cloneable{
     private String msg;
     private Boolean status;
 
-    BaseCode(int code, String msg, Boolean status){
+    ResultCode(int code, String msg, Boolean status){
         this.code = code;
         this.msg = msg;
         this.status = status;

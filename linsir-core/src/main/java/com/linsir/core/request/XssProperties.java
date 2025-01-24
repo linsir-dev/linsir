@@ -28,7 +28,7 @@ import java.util.List;
  * @author Chill
  */
 @Data
-@ConfigurationProperties("blade.xss")
+@ConfigurationProperties("linsir.xss")
 public class XssProperties {
 
 	/**

@@ -11,21 +11,15 @@ package com.linsir.core.code;
 public enum ResultCode implements ICode,Cloneable{
     
     /*成功返回的代码*/
-
     SUCCESS(200, "操作成功", Boolean.TRUE),
-
     /*部分成功（一般用于批量处理场景，只处理筛选后的合法数据）*/
     WARN_PARTIAL_SUCCESS(1001, "部分成功",Boolean.TRUE),
     /*有潜在的性能问题*/
     WARN_PERFORMANCE_ISSUE(1002, "潜在的性能问题",Boolean.FALSE),
-
     /*传入参数不对*/
     FAIL_INVALID_PARAM(4000, "请求参数不匹配",Boolean.FALSE),
-
     FAIL_INVALID_TOKEN(4001, "Token无效或已过期",Boolean.FALSE),
-
     TOKEN_ACCESS_FORBIDDEN(301, "token已被禁止访问",Boolean.FALSE),
-
     FAILED(400, "系统正忙，请稍后再试", Boolean.FALSE),
     UNAUTHORIZED(401, "没有认证", Boolean.FALSE),
     PAYMENT_REQUIRED(402, "Payment Required", Boolean.FALSE),
@@ -45,7 +39,6 @@ public enum ResultCode implements ICode,Cloneable{
     REQUESTED_RANGE_NOT_SATISFIABLE(416, "Requested range not satisfiable", Boolean.FALSE),
     EXPECTATION_FAILED(417, "Expectation Failed", Boolean.FALSE),
     I_AM_A_TEAPOT(418, "I'm a teapot", Boolean.FALSE),
-
 
     /***
      * 没有权限执行该操作
@@ -86,7 +79,6 @@ public enum ResultCode implements ICode,Cloneable{
      * 服务不可用
      */
     FAIL_SERVICE_UNAVAILABLE(5003, "服务不可用",Boolean.FALSE),
-
 
     FILE_TYPE_ERROR(5004,"文件类型错误",Boolean.FALSE);
     ;

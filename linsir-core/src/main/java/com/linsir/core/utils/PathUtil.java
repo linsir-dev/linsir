@@ -1,6 +1,5 @@
 package com.linsir.core.utils;
 
-import com.linsir.core.utils.StringPool;
 import org.springframework.lang.Nullable;
 
 import java.io.File;

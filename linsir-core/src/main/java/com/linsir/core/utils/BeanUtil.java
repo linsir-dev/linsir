@@ -21,7 +21,6 @@ import com.linsir.core.beans.BeanProperty;
 import com.linsir.core.beans.LinsirBeanCopier;
 import com.linsir.core.beans.LinsirBeanMap;
 import com.linsir.core.convert.LinsirConverter;
-import com.linsir.core.utils.ClassUtil;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyAccessorFactory;

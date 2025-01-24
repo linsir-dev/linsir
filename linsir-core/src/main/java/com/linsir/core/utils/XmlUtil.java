@@ -16,7 +16,6 @@
  */
 package com.linsir.core.utils;
 
-import com.linsir.core.utils.Exceptions;
 import org.springframework.lang.Nullable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

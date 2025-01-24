@@ -390,7 +390,7 @@ public final class ImageUtil {
 	 * @param text     水印文字
 	 * @param font     水印的字体
 	 * @param color    水印的字体颜色
-	 * @param position 水印位置 {@link ImagePosition}
+	 * @param position 水印位置 {@link }
 	 * @param x        修正值
 	 * @param y        修正值
 	 * @param alpha    透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字

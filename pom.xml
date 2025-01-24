@@ -43,10 +43,9 @@
       <module>linsir-core-log</module>
       <module>linsir-core-cloud</module>
       <module>linsir-core-jwt</module>
-      <module>linsir-core</module>
       <module>linsir-core-auth</module>
       <module>linsir-core-mybatis</module>
-        <module>linsir-core-tool</module>
+      <module>linsir-core</module>
     </modules>
 
   <dependencyManagement>

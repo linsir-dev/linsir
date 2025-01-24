@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
            <groupId>com.linsir</groupId>
-            <artifactId>linsir-core</artifactId>
+            <artifactId>linsir-core-tool</artifactId>
         </dependency>
     </dependencies>
 </project>

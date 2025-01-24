@@ -1,5 +1,6 @@
 package com.linsir.core.exception;
 
+
 import com.linsir.core.code.ICode;
 
 /**

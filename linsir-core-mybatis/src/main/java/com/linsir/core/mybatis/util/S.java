@@ -1,9 +1,8 @@
 
 package com.linsir.core.mybatis.util;
 
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.V;
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.config.BaseConfig;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;

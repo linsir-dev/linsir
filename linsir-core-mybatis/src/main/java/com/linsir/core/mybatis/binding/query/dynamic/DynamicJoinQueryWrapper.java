@@ -3,7 +3,7 @@ package com.linsir.core.mybatis.binding.query.dynamic;
 
 import com.linsir.core.mybatis.binding.JoinsBinder;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.vo.Pagination;
 import lombok.Getter;
 
 import java.util.Collection;

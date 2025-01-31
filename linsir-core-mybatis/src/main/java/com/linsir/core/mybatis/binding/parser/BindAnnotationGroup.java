@@ -2,7 +2,7 @@ package com.linsir.core.mybatis.binding.parser;
 
 
 import com.linsir.core.mybatis.binding.annotation.*;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;

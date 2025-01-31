@@ -8,10 +8,10 @@ import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapp
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
-import com.linsir.core.tool.utils.IGetter;
-import com.linsir.core.tool.utils.ISetter;
-import com.linsir.core.vo.LabelValue;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.vo.LabelValue;
+import com.linsir.core.mybatis.vo.Pagination;
+import com.linsir.core.utils.IGetter;
+import com.linsir.core.utils.ISetter;
 
 import java.io.Serializable;
 import java.util.Collection;

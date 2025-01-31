@@ -20,7 +20,7 @@ import com.linsir.core.launch.constant.AppConstant;
 import com.linsir.core.log.model.LogApi;
 import com.linsir.core.log.model.LogError;
 import com.linsir.core.log.model.LogUsual;
-import com.linsir.core.vo.jsonResults.JsonResult;
+import com.linsir.core.results.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,7 +45,7 @@ public interface ILogClient {
 	 * @return
 	 */
 	@PostMapping(API_PREFIX + "/saveUsualLog")
-	JsonResult<Boolean> saveUsualLog(@RequestBody LogUsual log);
+	R saveUsualLog(@RequestBody LogUsual log);
 
 	/**
 	 * 保存操作日志
@@ -54,7 +54,7 @@ public interface ILogClient {
 	 * @return
 	 */
 	@PostMapping(API_PREFIX + "/saveApiLog")
-	JsonResult<Boolean> saveApiLog(@RequestBody LogApi log);
+	R saveApiLog(@RequestBody LogApi log);
 
 	/**
 	 * 保存错误日志
@@ -63,6 +63,6 @@ public interface ILogClient {
 	 * @return
 	 */
 	@PostMapping(API_PREFIX + "/saveErrorLog")
-	JsonResult<Boolean> saveErrorLog(@RequestBody LogError log);
+	R saveErrorLog(@RequestBody LogError log);
 
 }

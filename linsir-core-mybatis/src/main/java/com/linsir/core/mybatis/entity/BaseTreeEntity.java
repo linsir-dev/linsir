@@ -1,9 +1,9 @@
 package com.linsir.core.mybatis.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

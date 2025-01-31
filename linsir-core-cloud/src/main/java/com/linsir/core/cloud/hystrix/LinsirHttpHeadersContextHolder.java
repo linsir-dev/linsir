@@ -18,8 +18,8 @@ package com.linsir.core.cloud.hystrix;
 
 import com.linsir.core.cloud.props.LinsirHystrixHeadersProperties;
 import com.linsir.core.launch.constant.TokenConstant;
-import com.linsir.core.tool.utils.StringUtil;
-import com.linsir.core.tool.utils.WebUtil;
+import com.linsir.core.utils.StringUtil;
+import com.linsir.core.utils.WebUtil;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.http.HttpHeaders;
 import org.springframework.lang.Nullable;

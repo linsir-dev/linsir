@@ -1,11 +1,11 @@
 package com.linsir.core.mybatis.binding.parser;
 
 
-import com.linsir.core.exception.InvalidUsageException;
 import com.linsir.core.mybatis.binding.binder.BaseBinder;
 import com.linsir.core.mybatis.binding.query.Comparison;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;

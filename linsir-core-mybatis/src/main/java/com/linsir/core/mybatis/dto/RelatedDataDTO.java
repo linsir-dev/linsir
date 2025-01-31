@@ -2,14 +2,13 @@ package com.linsir.core.mybatis.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.data.query.BaseCriteria;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.data.query.BaseCriteria;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -19,8 +19,8 @@ package com.linsir.core.cloud.version;
 
 import com.linsir.core.cloud.annotation.ApiVersion;
 import com.linsir.core.cloud.annotation.UrlVersion;
-import com.linsir.core.tool.utils.StringPool;
-import com.linsir.core.tool.utils.StringUtil;
+import com.linsir.core.utils.StringPool;
+import com.linsir.core.utils.StringUtil;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.web.method.HandlerMethod;

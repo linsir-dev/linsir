@@ -16,7 +16,7 @@
  */
 package com.linsir.core.log.error;
 
-import com.linsir.core.tool.jackson.JsonUtil;
+import com.linsir.core.jackson.JsonUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;

@@ -1,10 +1,10 @@
 package com.linsir.core.mybatis.binding.helper;
 
+import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.Binder;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanWrapper;
 

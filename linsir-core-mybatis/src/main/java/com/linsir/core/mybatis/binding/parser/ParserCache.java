@@ -4,16 +4,17 @@ package com.linsir.core.mybatis.binding.parser;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.linsir.core.data.annotation.DataMask;
-import com.linsir.core.data.protect.DefaultEncryptTypeHandler;
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.query.BindQuery;
 import com.linsir.core.mybatis.binding.query.dynamic.AnnoJoiner;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.data.annotation.DataMask;
+import com.linsir.core.mybatis.data.protect.DefaultEncryptTypeHandler;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.type.TypeHandler;
@@ -161,7 +162,7 @@ public class ParserCache {
     public static BaseMapper getMapperInstance(Class<?> entityClass){
         BaseMapper mapper = BindingCacheManager.getMapperByClass(entityClass);
         if(mapper == null){
-            throw new InvalidUsageException("未找到 {} 的Mapper定义！", entityClass.getName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"未找到 {} 的Mapper定义！", entityClass.getName());
         }
         return mapper;
     }

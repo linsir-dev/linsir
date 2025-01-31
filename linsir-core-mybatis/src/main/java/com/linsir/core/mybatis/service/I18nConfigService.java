@@ -1,10 +1,9 @@
 
 package com.linsir.core.mybatis.service;
 
-
-import com.linsir.core.entity.I18nConfig;
-import com.linsir.core.vo.I18nConfigVO;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.entity.I18nConfig;
+import com.linsir.core.mybatis.vo.I18nConfigVO;
+import com.linsir.core.mybatis.vo.Pagination;
 
 import java.util.Collection;
 import java.util.List;

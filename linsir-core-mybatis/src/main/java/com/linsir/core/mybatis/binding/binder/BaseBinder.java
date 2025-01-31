@@ -4,9 +4,7 @@ package com.linsir.core.mybatis.binding.binder;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.holder.ThreadLocalHolder;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.annotation.Module;
 import com.linsir.core.mybatis.binding.binder.remote.RemoteBindDTO;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
@@ -16,11 +14,15 @@ import com.linsir.core.mybatis.binding.parser.FieldComparison;
 import com.linsir.core.mybatis.binding.parser.MiddleTable;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.binding.query.Comparison;
-import com.linsir.core.service.BaseService;
-import com.linsir.core.tool.utils.IGetter;
-import com.linsir.core.util.*;
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.holder.ThreadLocalHolder;
+import com.linsir.core.mybatis.service.BaseService;
+import com.linsir.core.mybatis.util.*;
+import com.linsir.core.utils.IGetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.AnnotationUtils;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -184,7 +186,7 @@ public abstract class BaseBinder<T> {
                 fieldName = annoObjectFieldKey;
             }
             if(fieldName == null) {
-                throw new InvalidUsageException("字段/列 {} 不存在", annoObjectFieldKey);
+                throw new InvalidUsageException(ResultCode.FAIL_INVALID_PARAM,"字段/列 {} 不存在", annoObjectFieldKey);
             }
             annoObjJoinFieldComparisons.add(new FieldComparison(fieldName, comparison, eqFilterConsVal));
         }
@@ -514,7 +516,7 @@ public abstract class BaseBinder<T> {
         if(iService == null){
             // 本地绑定需确保有Service实现类
             if(moduleAnno == null){
-                throw new InvalidUsageException("{} 无 BaseService/IService实现类，无法执行注解绑定！", entityClass.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"{} 无 BaseService/IService实现类，无法执行注解绑定！", entityClass.getSimpleName());
             }
         }
         return iService;

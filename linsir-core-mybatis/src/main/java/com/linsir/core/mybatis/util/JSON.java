@@ -4,8 +4,8 @@ package com.linsir.core.mybatis.util;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linsir.core.exception.BusinessException;
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.mybatis.exception.BusinessException;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

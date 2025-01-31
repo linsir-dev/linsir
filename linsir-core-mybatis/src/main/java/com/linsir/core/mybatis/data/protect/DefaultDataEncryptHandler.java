@@ -1,6 +1,7 @@
 package com.linsir.core.mybatis.data.protect;
 
-import com.linsir.core.tool.utils.Encryptor;
+
+import com.linsir.core.mybatis.util.Encryptor;
 
 /**
  * description：加密，解密 处理器的默认实现类

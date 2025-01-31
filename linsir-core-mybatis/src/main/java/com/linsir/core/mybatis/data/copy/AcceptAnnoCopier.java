@@ -1,8 +1,8 @@
 package com.linsir.core.mybatis.data.copy;
 
 
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.BeanWrapper;

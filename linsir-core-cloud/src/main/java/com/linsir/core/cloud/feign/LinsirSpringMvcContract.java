@@ -19,8 +19,8 @@ package com.linsir.core.cloud.feign;
 import com.linsir.core.cloud.annotation.ApiVersion;
 import com.linsir.core.cloud.annotation.UrlVersion;
 import com.linsir.core.cloud.version.LinsirMediaType;
-import com.linsir.core.tool.utils.StringPool;
-import com.linsir.core.tool.utils.StringUtil;
+import com.linsir.core.utils.StringPool;
+import com.linsir.core.utils.StringUtil;
 import feign.MethodMetadata;
 
 import org.springframework.cloud.openfeign.AnnotatedParameterProcessor;

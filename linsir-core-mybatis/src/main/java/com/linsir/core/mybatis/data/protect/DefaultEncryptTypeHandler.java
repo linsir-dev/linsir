@@ -1,8 +1,8 @@
 package com.linsir.core.mybatis.data.protect;
 
 
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.util.ContextHolder;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.ContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

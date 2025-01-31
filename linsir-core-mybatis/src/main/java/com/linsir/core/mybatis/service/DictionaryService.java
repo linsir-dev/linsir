@@ -1,8 +1,9 @@
 package com.linsir.core.mybatis.service;
 
-import com.linsir.core.entity.Dictionary;
-import com.linsir.core.vo.DictionaryVO;
-import com.linsir.core.vo.LabelValue;
+
+import com.linsir.core.mybatis.entity.Dictionary;
+import com.linsir.core.mybatis.vo.DictionaryVO;
+import com.linsir.core.mybatis.vo.LabelValue;
 
 import java.util.List;
 

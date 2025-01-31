@@ -2,12 +2,13 @@ package com.linsir.core.mybatis.service;
 
 
 
-import com.linsir.core.entity.Dictionary;
-import com.linsir.core.vo.DictionaryVO;
-import com.linsir.core.vo.FilterDataVO;
-import com.linsir.core.vo.LabelValue;
+
+import com.linsir.core.mybatis.entity.Dictionary;
+import com.linsir.core.mybatis.vo.DictionaryVO;
+import com.linsir.core.mybatis.vo.LabelValue;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：linsir
@@ -66,12 +67,17 @@ public interface DictionaryServiceExtProvider {
     List<DictionaryVO> getDictDefinitionVOList();
 
     /**
-     * 转化前端识别得数据结构
-     * @param title
-     * @param key
-     * @param multiple
-     * @param dictionaryList
+     * 获取存储值-选项的映射Map
+     * @param type
      * @return
      */
-    FilterDataVO conversionFilterDataVO(String title, String key, boolean multiple, List<Dictionary> dictionaryList);
+    Map<String, LabelValue> getValue2ItemMap(String type);
+
+    /**
+     * 获取显示值-选项的映射Map（一般用于excel反向解析）
+     * @param type
+     * @return
+     */
+    Map<String, LabelValue> getLabel2ItemMap(String type);
+
 }

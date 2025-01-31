@@ -1,7 +1,8 @@
 package com.linsir.core.mybatis.cache;
 
 
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
 import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 
@@ -27,6 +28,6 @@ public class StaticMemoryCacheManager extends BaseMemoryCacheManager implements 
 
     @Override
     public void clearOutOfDateData(String cacheName) {
-        throw new InvalidUsageException("StaticMemoryCacheManager 缓存不存在过期，不支持清理！");
+        throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"StaticMemoryCacheManager 缓存不存在过期，不支持清理！");
     }
 }

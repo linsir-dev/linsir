@@ -17,27 +17,29 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.ChainWrappers;
-import com.linsir.core.binding.Binder;
-import com.linsir.core.binding.cache.BindingCacheManager;
-import com.linsir.core.binding.helper.ServiceAdaptor;
-import com.linsir.core.binding.helper.WrapperHelper;
-import com.linsir.core.binding.parser.EntityInfoCache;
-import com.linsir.core.binding.query.dynamic.DynamicJoinQueryWrapper;
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.exception.BusinessException;
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.mapper.BaseCrudMapper;
+
+
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.binding.Binder;
+import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
+import com.linsir.core.mybatis.binding.helper.ServiceAdaptor;
+import com.linsir.core.mybatis.binding.helper.WrapperHelper;
+import com.linsir.core.mybatis.binding.parser.EntityInfoCache;
+import com.linsir.core.mybatis.binding.query.dynamic.DynamicJoinQueryWrapper;
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.exception.BusinessException;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.mapper.BaseCrudMapper;
 import com.linsir.core.mybatis.service.BaseService;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.tool.utils.IGetter;
-import com.linsir.core.tool.utils.ISetter;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.ContextHelper;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
-import com.linsir.core.vo.LabelValue;
-import com.linsir.core.vo.Pagination;
-import com.linsir.core.vo.Status;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
+import com.linsir.core.mybatis.vo.LabelValue;
+import com.linsir.core.mybatis.vo.Pagination;
+import com.linsir.core.utils.IGetter;
+import com.linsir.core.utils.ISetter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.springframework.stereotype.Service;
@@ -144,13 +146,13 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
         // 填充关联关系
         relatedEntities.forEach(relatedEntity-> BeanUtils.setProperty(relatedEntity, attributeName, pkValue));
         // 获取关联对象对应的Service
-        BaseService relatedEntityService = ContextHelper.getBaseServiceByEntity(relatedEntityClass);
+        BaseService relatedEntityService = ContextHolder.getBaseServiceByEntity(relatedEntityClass);
         if(relatedEntityService != null){
             return relatedEntityService.createEntities(relatedEntities);
         }
         else{
             // 查找mapper
-            BaseMapper mapper = ContextHelper.getBaseMapperByEntity(entity.getClass());
+            BaseMapper mapper = ContextHolder.getBaseMapperByEntity(entity.getClass());
             // 新增关联，无service只能循环插入
             for(RE relation : relatedEntities){
                 mapper.insert(relation);
@@ -165,7 +167,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
         if(V.isEmpty(entityList)){
             return false;
         }
-        if(DbType.SQL_SERVER.getDb().equalsIgnoreCase(ContextHelper.getDatabaseType())){
+        if(DbType.SQL_SERVER.getDb().equalsIgnoreCase(ContextHolder.getDatabaseType())){
             for(T entity : entityList){
                 createEntity(entity);
             }
@@ -353,7 +355,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
                     n2nRelations.add(relation);
                 }
             } catch (Exception e) {
-                throw new BusinessException(Status.FAIL_EXCEPTION ,e);
+                throw new BusinessException(ResultCode.FAIL_EXCEPTION ,e);
             }
             if (iService != null) {
                 if (iService instanceof BaseService) {
@@ -394,7 +396,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
             }
         }
         // 获取关联对象对应的Service
-        BaseService relatedEntityService = ContextHelper.getBaseServiceByEntity(relatedEntityClass);
+        BaseService relatedEntityService = ContextHolder.getBaseServiceByEntity(relatedEntityClass);
         if(relatedEntityService == null){
             log.error("未能识别到Entity: {} 的Service实现，请检查！", relatedEntityClass.getName());
             return false;
@@ -448,7 +450,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
             return false;
         }
         // 获取关联对象对应的Service
-        BaseService relatedEntityService = ContextHelper.getBaseServiceByEntity(relatedEntityClass);
+        BaseService relatedEntityService = ContextHolder.getBaseServiceByEntity(relatedEntityClass);
         if(relatedEntityService == null){
             log.error("未能识别到Entity: {} 的Service实现，请检查！", relatedEntityClass.getName());
             return false;
@@ -581,7 +583,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
     @Override
     public boolean exists(Wrapper queryWrapper) {
         if((queryWrapper instanceof QueryWrapper) && queryWrapper.getSqlSelect() == null){
-            String pk = ContextHelper.getIdColumnName(getEntityClass());
+            String pk = ContextHolder.getIdColumnName(getEntityClass());
             ((QueryWrapper)queryWrapper).select(pk);
         }
         T entity = getSingleEntity(queryWrapper);
@@ -591,7 +593,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
     @Override
     public List<T> getEntityListByIds(List ids) {
         QueryWrapper<T> queryWrapper = new QueryWrapper();
-        String pk = ContextHelper.getIdColumnName(getEntityClass());
+        String pk = ContextHolder.getIdColumnName(getEntityClass());
         queryWrapper.in(pk, ids);
         return getEntityList(queryWrapper);
     }
@@ -744,7 +746,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
      * @return
      */
     private Object getPrimaryKeyValue(Object entity){
-        String pk = ContextHelper.getIdFieldName(entity.getClass());
+        String pk = ContextHolder.getIdFieldName(entity.getClass());
         return BeanUtils.getProperty(entity, pk);
     }
 

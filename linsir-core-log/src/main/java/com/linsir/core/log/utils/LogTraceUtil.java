@@ -16,7 +16,7 @@
  */
 package com.linsir.core.log.utils;
 
-import com.linsir.core.tool.utils.StringUtil;
+import com.linsir.core.utils.StringUtil;
 import org.slf4j.MDC;
 
 /**

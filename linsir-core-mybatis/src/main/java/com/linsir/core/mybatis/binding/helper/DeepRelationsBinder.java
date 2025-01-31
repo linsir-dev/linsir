@@ -3,8 +3,8 @@ package com.linsir.core.mybatis.binding.helper;
 
 import com.linsir.core.mybatis.binding.RelationsBinder;
 import com.linsir.core.mybatis.binding.parser.FieldAnnotation;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.V;
 
 import java.util.ArrayList;
 import java.util.List;

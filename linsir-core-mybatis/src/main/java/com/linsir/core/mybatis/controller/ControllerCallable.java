@@ -1,7 +1,7 @@
 package com.linsir.core.mybatis.controller;
 
 
-import com.linsir.core.vo.IResult;
+import com.linsir.core.results.R;
 
 /**
  * @author linsir
@@ -18,6 +18,6 @@ public interface ControllerCallable {
      *
      * @return
      */
-    IResult execute() throws Exception;
+    R execute() throws Exception;
 
 }

@@ -6,8 +6,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.linsir.core.util.JSON;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.util.JSON;
+import com.linsir.core.mybatis.util.V;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.linsir.core.mybatis.dto;
 
 
-import com.linsir.core.entity.AbstractEntity;
+import com.linsir.core.mybatis.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

@@ -22,7 +22,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.linsir.core.tool.utils.DateUtil;
+import com.linsir.core.utils.DateUtil;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

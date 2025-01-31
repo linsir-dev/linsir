@@ -6,10 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.ContextHolder;
-import com.linsir.core.util.JSON;
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.util.JSON;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

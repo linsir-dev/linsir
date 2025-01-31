@@ -17,7 +17,7 @@
 package com.linsir.core.cloud.hystrix;
 
 import com.linsir.core.cloud.props.LinsirHystrixHeadersProperties;
-import com.linsir.core.tool.utils.ThreadLocalUtil;
+import com.linsir.core.utils.ThreadLocalUtil;
 import org.slf4j.MDC;
 import org.springframework.http.HttpHeaders;
 import org.springframework.lang.Nullable;

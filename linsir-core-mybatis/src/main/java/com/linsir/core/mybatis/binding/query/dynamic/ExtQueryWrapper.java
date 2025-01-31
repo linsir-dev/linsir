@@ -3,11 +3,12 @@ package com.linsir.core.mybatis.binding.query.dynamic;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.helper.ServiceAdaptor;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
-import com.linsir.core.util.ContextHolder;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.vo.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,7 +53,7 @@ public class ExtQueryWrapper<T> extends QueryWrapper<T> {
             return ServiceAdaptor.getSingleEntity(iService, this);
         }
         else{
-            throw new InvalidUsageException("查询对象无BaseService/IService实现: {}",this.mainEntityClass.getSimpleName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"查询对象无BaseService/IService实现: {}",this.mainEntityClass.getSimpleName());
         }
     }
 
@@ -68,7 +69,7 @@ public class ExtQueryWrapper<T> extends QueryWrapper<T> {
             return ServiceAdaptor.queryList(iService, this);
         }
         else{
-            throw new InvalidUsageException("查询对象无BaseService/IService实现: {}",entityClazz.getSimpleName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"查询对象无BaseService/IService实现: {}",entityClazz.getSimpleName());
         }
     }
 
@@ -84,7 +85,7 @@ public class ExtQueryWrapper<T> extends QueryWrapper<T> {
             return ServiceAdaptor.queryList(iService, this, pagination, entityClazz);
         }
         else{
-            throw new InvalidUsageException("查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
         }
     }
 

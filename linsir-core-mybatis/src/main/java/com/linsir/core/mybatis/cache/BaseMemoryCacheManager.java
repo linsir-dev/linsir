@@ -1,7 +1,8 @@
 package com.linsir.core.mybatis.cache;
 
 
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
@@ -80,7 +81,7 @@ public abstract class BaseMemoryCacheManager extends SimpleCacheManager implemen
             }
         }
         else {
-            throw new InvalidUsageException("无法获取cache：{}，请检查是否初始化", cacheName);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法获取cache：{}，请检查是否初始化", cacheName);
         }
     }
 
@@ -100,7 +101,7 @@ public abstract class BaseMemoryCacheManager extends SimpleCacheManager implemen
             }
         }
         else {
-            throw new InvalidUsageException("无法获取cache：{}，请检查是否初始化", cacheName);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法获取cache：{}，请检查是否初始化", cacheName);
         }
     }
 

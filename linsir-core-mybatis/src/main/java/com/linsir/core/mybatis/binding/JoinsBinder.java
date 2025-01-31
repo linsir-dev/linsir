@@ -5,19 +5,20 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.mapper.DynamicQueryMapper;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.helper.ServiceAdaptor;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
 import com.linsir.core.mybatis.binding.query.dynamic.AnnoJoiner;
 import com.linsir.core.mybatis.binding.query.dynamic.DynamicJoinQueryWrapper;
 import com.linsir.core.mybatis.binding.query.dynamic.DynamicSqlProvider;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.ContextHolder;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.mapper.DynamicQueryMapper;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
+import com.linsir.core.mybatis.vo.Pagination;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
@@ -85,7 +86,7 @@ public class JoinsBinder {
                 return iService.count(queryWrapper);
             }
             else{
-                throw new InvalidUsageException("单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
             }
         }
         long begin = System.currentTimeMillis();
@@ -119,7 +120,7 @@ public class JoinsBinder {
                 return ServiceAdaptor.queryList(iService, (QueryWrapper)queryWrapper, pagination, entityClazz);
             }
             else{
-                throw new InvalidUsageException("单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
             }
         }
         long begin = System.currentTimeMillis();

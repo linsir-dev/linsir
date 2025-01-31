@@ -1,7 +1,7 @@
 package com.linsir.core.mybatis.binding.parser;
 
 
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.ExpressionVisitorAdapter;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;

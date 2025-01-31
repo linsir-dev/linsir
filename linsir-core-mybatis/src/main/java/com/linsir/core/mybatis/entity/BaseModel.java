@@ -3,7 +3,7 @@ package com.linsir.core.mybatis.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.tool.constant.CommonConstant;
+import com.linsir.core.constant.CommonConstant;
 import lombok.Data;
 
 /**

@@ -17,9 +17,9 @@
 package com.linsir.core.cloud.feign;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.linsir.core.code.BaseCode;
-import com.linsir.core.tool.jackson.JsonUtil;
-import com.linsir.core.tool.utils.ObjectUtil;
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.jackson.JsonUtil;
+import com.linsir.core.utils.ObjectUtil;
 import feign.FeignException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,14 +56,14 @@ public class LinsirFeignFallback<T> implements MethodInterceptor {
 		// 非 FeignException
 		if (!(cause instanceof FeignException)) {
 			/*return R.fail(ResultCode.INTERNAL_SERVER_ERROR, errorMessage);*/
-			return BaseCode.FAIL_SERVICE_UNAVAILABLE;
+			return ResultCode.FAIL_SERVICE_UNAVAILABLE;
 		}
 		FeignException exception = (FeignException) cause;
 		byte[] content = exception.content();
 		// 如果返回的数据为空
 		if (ObjectUtil.isEmpty(content)) {
 			/*return R.fail(ResultCode.INTERNAL_SERVER_ERROR, errorMessage);*/
-			return BaseCode.FAIL_SERVICE_UNAVAILABLE;
+			return ResultCode.FAIL_SERVICE_UNAVAILABLE;
 		}
 		// 转换成 jsonNode 读取，因为直接转换，可能 对方放回的并 不是 R 的格式。
 		JsonNode resultNode = JsonUtil.readTree(content);

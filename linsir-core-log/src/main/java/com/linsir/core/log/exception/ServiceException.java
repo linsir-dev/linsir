@@ -16,7 +16,7 @@
  */
 package com.linsir.core.log.exception;
 
-import com.linsir.core.code.BaseCode;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.code.ICode;
 import lombok.Getter;
 
@@ -34,7 +34,7 @@ public class ServiceException extends RuntimeException {
 
 	public ServiceException(String message) {
 		super(message);
-		this.resultCode = BaseCode.FAIL_EXCEPTION;
+		this.resultCode = ResultCode.FAIL_EXCEPTION;
 	}
 
 	public ServiceException(ICode resultCode) {

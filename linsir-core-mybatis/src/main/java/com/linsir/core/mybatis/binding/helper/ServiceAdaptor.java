@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linsir.core.service.BaseService;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.service.BaseService;
+import com.linsir.core.mybatis.vo.Pagination;
 
 import java.util.List;
 

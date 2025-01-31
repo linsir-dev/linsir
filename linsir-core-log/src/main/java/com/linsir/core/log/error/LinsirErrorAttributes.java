@@ -17,8 +17,9 @@
 package com.linsir.core.log.error;
 
 import com.linsir.core.log.publisher.ErrorLogPublisher;
-import com.linsir.core.tool.utils.BeanUtil;
-import com.linsir.core.vo.jsonResults.JsonResult;
+import com.linsir.core.log.vo.LogResult;
+import com.linsir.core.results.R;
+import com.linsir.core.utils.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.lang.Nullable;
@@ -39,15 +40,15 @@ public class LinsirErrorAttributes extends DefaultErrorAttributes {
 		String requestUri = this.getAttr(webRequest, "javax.servlet.error.request_uri");
 		Integer status = this.getAttr(webRequest, "javax.servlet.error.status_code");
 		Throwable error = getError(webRequest);
-		JsonResult result = null;
+		R result = null;
 		if (error == null) {
 			log.error("URL:{} error status:{}", requestUri, status);
-			JsonResult.FAIL_EXCEPTION("系统未知异常[HttpStatus]");
+			LogResult.FAIL_EXCEPTION("系统未知异常[HttpStatus]");
 			/*result = R.fail(ResultCode.FAILURE, "系统未知异常[HttpStatus]:" + status);*/
 		} else {
 			log.error(String.format("URL:%s error status:%d", requestUri, status), error);
 			/*result = R.fail(status, error.getMessage());*/
-			result = JsonResult.FAIL_EXCEPTION(error.getMessage());
+			result = LogResult.FAIL_EXCEPTION(error.getMessage());
 		}
 		// 发送服务异常事件
 		ErrorLogPublisher.publishEvent(error, requestUri);

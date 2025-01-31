@@ -2,17 +2,18 @@ package com.linsir.core.mybatis.controller;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.linsir.core.binding.cache.BindingCacheManager;
-import com.linsir.core.code.BaseCode;
-import com.linsir.core.entity.AbstractEntity;
-import com.linsir.core.service.BaseService;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.ContextHelper;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
-import com.linsir.core.vo.Pagination;
-import com.linsir.core.vo.jsonResults.JsonResult;
+
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
+import com.linsir.core.mybatis.entity.AbstractEntity;
+import com.linsir.core.mybatis.service.BaseService;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
+import com.linsir.core.mybatis.vo.JsonResult;
+import com.linsir.core.mybatis.vo.Pagination;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
@@ -157,7 +158,7 @@ public class BaseCrudRestController <E extends AbstractEntity> extends BaseContr
     protected JsonResult<?> updateEntity(Serializable id, E entity) throws Exception {
         // 如果前端没有指定entity.id，在此设置，以兼容前端不传的情况
         if (entity.getId() == null) {
-            String pk = ContextHelper.getIdFieldName(getEntityClass());
+            String pk = ContextHolder.getIdFieldName(getEntityClass());
             if (CommonConstant.FieldName.id.name().equals(pk)) {
                 Long longId = (id instanceof Long) ? (Long) id : Long.parseLong((String) id);
                 entity.setId(longId);
@@ -271,7 +272,7 @@ public class BaseCrudRestController <E extends AbstractEntity> extends BaseContr
     private Map<String, Object> buildPKDataMap(E entity) {
         // 组装返回结果
         Map<String, Object> data = new HashMap<>(2);
-        String pk = ContextHelper.getIdFieldName(getEntityClass());
+        String pk = ContextHolder.getIdFieldName(getEntityClass());
         Object pkValue = (CommonConstant.FieldName.id.name().equals(pk)) ? entity.getId() : BeanUtils.getProperty(entity, pk);
         data.put(pk, pkValue);
         return data;
@@ -288,7 +289,7 @@ public class BaseCrudRestController <E extends AbstractEntity> extends BaseContr
     }
 
     protected JsonResult<?> failOperation() {
-        return new JsonResult<>(BaseCode.FAIL_OPERATION);
+        return new JsonResult<>(ResultCode.FAIL_OPERATION);
     }
 
     protected JsonResult<?> failOperation(String msg) {
@@ -296,14 +297,14 @@ public class BaseCrudRestController <E extends AbstractEntity> extends BaseContr
     }
 
     protected JsonResult<?> failInvalidParam() {
-        return new JsonResult<>(BaseCode.FAIL_INVALID_PARAM);
+        return new JsonResult<>(ResultCode.FAIL_INVALID_PARAM);
     }
 
     protected JsonResult<?> failInvalidParam(String msg) {
         return JsonResult.FAIL_INVALID_PARAM(msg);
     }
 
-    protected JsonResult<?> fail(BaseCode status, String msg) {
+    protected JsonResult<?> fail(ResultCode status, String msg) {
         return new JsonResult<>(status).msg(msg);
     }
 
@@ -392,7 +393,7 @@ public class BaseCrudRestController <E extends AbstractEntity> extends BaseContr
      * @return
      */
     protected BaseService<E> getService() {
-        return ContextHelper.getBaseServiceByEntity(getEntityClass());
+        return ContextHolder.getBaseServiceByEntity(getEntityClass());
     }
 
     /**

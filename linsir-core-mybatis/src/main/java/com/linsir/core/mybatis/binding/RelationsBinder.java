@@ -6,10 +6,11 @@ import com.linsir.core.mybatis.binding.helper.RelationsBindingManager;
 import com.linsir.core.mybatis.binding.parser.BindAnnotationGroup;
 import com.linsir.core.mybatis.binding.parser.FieldAnnotation;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
-import com.linsir.core.service.I18nConfigService;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.ContextHolder;
-import com.linsir.core.util.V;
+
+import com.linsir.core.mybatis.service.I18nConfigService;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.ContextHolder;
+import com.linsir.core.mybatis.util.V;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.i18n.LocaleContextHolder;

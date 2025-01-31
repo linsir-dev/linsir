@@ -21,7 +21,7 @@
         <!--linsir-->
         <dependency>
             <groupId>com.linsir</groupId>
-            <artifactId>linsir-core-tool</artifactId>
+            <artifactId>linsir-core</artifactId>
         </dependency>
         <!--spring-->
         <dependency>

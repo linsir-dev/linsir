@@ -1,13 +1,12 @@
 package com.linsir.core.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.linsir.core.binding.query.BindQuery;
-import com.linsir.core.binding.query.Comparison;
+import com.linsir.core.mybatis.binding.query.BindQuery;
+import com.linsir.core.mybatis.binding.query.Comparison;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
-
 
 
 /**

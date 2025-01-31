@@ -24,7 +24,7 @@ import ch.qos.logback.core.Context;
 import ch.qos.logback.core.spi.ContextAwareBase;
 import ch.qos.logback.core.spi.LifeCycle;
 import com.linsir.core.log.utils.ElkPropsUtil;
-import com.linsir.core.tool.utils.StringUtil;
+import com.linsir.core.utils.StringUtil;
 
 /**
  * logback监听类

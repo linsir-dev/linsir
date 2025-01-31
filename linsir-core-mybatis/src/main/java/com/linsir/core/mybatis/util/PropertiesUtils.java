@@ -15,7 +15,6 @@
  */
 package com.linsir.core.mybatis.util;
 
-import com.linsir.core.tool.utils.Encryptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 

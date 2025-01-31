@@ -10,8 +10,7 @@ import com.linsir.core.mybatis.util.S;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serial;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * 无效使用异常类 InvalidUsageException
@@ -27,57 +26,84 @@ public class InvalidUsageException extends BaseException {
     @Serial
     private static final long serialVersionUID = -1203618387183809985L;
 
+    /**
+     * 默认异常
+     */
     public InvalidUsageException()
     {
-        super(ResultCode.INVALID_OPERATION.getMsg());
-        this.code = ResultCode.INVALID_OPERATION;
-        logCode(this.code);
+        super();
     }
 
     /**
-     * 根据code返回数据
+     * 附加消息
+     * @param msg
+     */
+    public InvalidUsageException(String msg)
+    {
+        super(msg);
+    }
+
+    /**
+     * 默认code 异常
      * @param code
      */
-    public InvalidUsageException(ICode code) {
-        super(code.getMsg());
-        this.code = code;
-        logCode(code);
-    }
-
-    public InvalidUsageException(ICode code, String msg) {
-        super(msg);
-        logCode(code);
-        this.code = code;
-    }
-
-    /**
-     * 自定义内容提示 错误编码：{}, 错误状态：{},错误信息:{}
-     *
-     * @param msg
-     */
-    public InvalidUsageException(String msg, ICode code, Object... args) {
-        super(S.format(msg, args));
-        logMsg(code,msg);
-        this.code = code;
-    }
-
-    /**
-     * 自定义内容提示
-     *
-     * @param msg
-     */
-    public InvalidUsageException(Throwable ex, String msg, ICode code, Object... args) {
-        super(S.format(msg, args), ex);
-        logMsg(code,msg);
-        this.code = code;
-    }
-
-    /**
-     * 默认无效的方法
-     * */
-    public static InvalidUsageException getInvalidUsageException(ICode code)
+    public InvalidUsageException(ICode code)
     {
-        return new InvalidUsageException(code);
+        super(code);
+    }
+
+    /**
+     *
+     * @param msg
+     * @param code
+     */
+    public InvalidUsageException(String msg, ICode code)
+    {
+        super(msg, code);
+    }
+
+    /**
+     *
+     * @param msg
+     * @param code
+     * @param args
+     */
+    public InvalidUsageException( ICode code, String msg,Object... args)
+    {
+        super(code, msg, args);
+    }
+
+
+    /**
+     *
+     * @param ex
+     * @param msg
+     * @param code
+     * @param args
+     */
+    public InvalidUsageException(Throwable ex, String msg, ICode code, Object... args)
+    {
+        super(ex, msg, code, args);
+    }
+
+
+    /**
+     * 默认的无效的异常
+     * @return
+     */
+    public static InvalidUsageException getInvalidUsageException()
+    {
+        return new InvalidUsageException(ResultCode.INVALID_OPERATION);
+    }
+
+    /**
+     * 根据信息获取默认的异常
+     * @param msg
+     * @return
+     */
+    public static InvalidUsageException getInvalidUsageException(String msg)
+    {
+        return new InvalidUsageException(msg, ResultCode.INVALID_OPERATION);
     }
 
 }

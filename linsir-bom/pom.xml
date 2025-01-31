@@ -26,9 +26,9 @@
         <!--linsir-core-->
         <linsir.version>1.2.0</linsir.version>
         <linsir-bom.version>1.2.0</linsir-bom.version>
+        <linsir-core.version>1.2.0</linsir-core.version>
         <linsir-core-auto.version>1.2.0</linsir-core-auto.version>
         <linsir-core-launch.version>1.2.0</linsir-core-launch.version>
-        <linsir-core-tool.version>1.2.0</linsir-core-tool.version>
         <linsir-core-knife4j.version>1.2.0</linsir-core-knife4j.version>
         <linsir-core.version>1.2.0</linsir-core.version>
         <linsir-core-db.version>1.2.0</linsir-core-db.version>
@@ -49,12 +49,14 @@
         <feign-httpclient.version>13.2.1</feign-httpclient.version>
         <spring-boot-admin-starter-client.version>3.4.1</spring-boot-admin-starter-client.version>
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
-        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <mybatis-plus-spring-boot3-starter.version>3.5.4</mybatis-plus-spring-boot3-starter.version>
+        <mybatis-plus-extension.version>3.5.4</mybatis-plus-extension.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <jsqlparser.version>5.1</jsqlparser.version>
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
+        <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
     </properties>
 
 
@@ -194,6 +196,11 @@
                 <version>${mybatis-plus-spring-boot3-starter.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus-extension.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
@@ -207,6 +214,11 @@
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql-connector-j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

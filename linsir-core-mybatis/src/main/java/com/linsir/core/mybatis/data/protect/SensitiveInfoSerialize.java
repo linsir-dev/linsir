@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
-import com.linsir.core.exception.InvalidUsageException;
 import com.linsir.core.mybatis.data.annotation.DataMask;
-import com.linsir.core.util.ContextHolder;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.ContextHolder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

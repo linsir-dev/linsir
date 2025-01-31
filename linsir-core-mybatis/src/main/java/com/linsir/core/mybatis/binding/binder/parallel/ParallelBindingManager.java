@@ -1,13 +1,13 @@
 package com.linsir.core.mybatis.binding.binder.parallel;
 
-import com.linsir.core.exception.InvalidUsageException;
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.binder.*;
 import com.linsir.core.mybatis.binding.parser.ConditionManager;
 import com.linsir.core.mybatis.binding.parser.FieldAnnotation;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.service.DictionaryServiceExtProvider;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
-import com.linsir.core.service.DictionaryServiceExtProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;

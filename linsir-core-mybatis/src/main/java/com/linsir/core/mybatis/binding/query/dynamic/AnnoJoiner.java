@@ -2,12 +2,13 @@ package com.linsir.core.mybatis.binding.query.dynamic;
 
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.binding.query.BindQuery;
 import com.linsir.core.mybatis.binding.query.Comparison;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.V;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,7 @@ public class AnnoJoiner implements Serializable {
         if (V.notEmpty(query.field())) {
             this.columnName = propInfo.getColumnByField(query.field());
             if(V.isEmpty(this.columnName)){
-                throw new InvalidUsageException("@BindQuery 注解配置异常，filed={} 无法解析出对应的列名！", query.field());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"@BindQuery 注解配置异常，filed={} 无法解析出对应的列名！", query.field());
             }
         }
         else if (V.notEmpty(query.column())) {
@@ -48,7 +49,7 @@ public class AnnoJoiner implements Serializable {
         if(V.isEmpty(this.columnName)){
             this.columnName = propInfo.getColumnByField(field.getName());
             if(V.isEmpty(this.columnName)){
-                throw new InvalidUsageException("@BindQuery 注解配置异常，filed={} 无法解析出对应的列名！", query.field());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"@BindQuery 注解配置异常，filed={} 无法解析出对应的列名！", query.field());
             }
         }
         // join 表名

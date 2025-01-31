@@ -5,16 +5,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.linsir.core.config.BaseConfig;
+import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.QueryBuilder;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.binding.query.BindQuery;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.BeanUtils;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.util.BeanUtils;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.SQL;
 
@@ -112,7 +112,7 @@ public class DynamicSqlProvider {
                     String isDeletedCol = ParserCache.getDeletedColumn(wrapper.getEntityTable());
                     String isDeletedSection = "self."+ isDeletedCol;
                     if(isDeletedCol != null && !QueryBuilder.checkHasColumn(segments.getNormal(), isDeletedSection)){
-                        WHERE(isDeletedSection+ " = " +BaseConfig.getActiveFlagValue());
+                        WHERE(isDeletedSection+ " = " + BaseConfig.getActiveFlagValue());
                     }
                 }
                 // 存在联表且无where条件，

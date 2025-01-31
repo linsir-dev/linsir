@@ -4,13 +4,15 @@ package com.linsir.core.mybatis.util;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+
 import com.baomidou.mybatisplus.extension.toolkit.JdbcUtils;
-import com.linsir.core.binding.cache.BindingCacheManager;
-import com.linsir.core.binding.parser.EntityInfoCache;
-import com.linsir.core.binding.parser.ParserCache;
-import com.linsir.core.binding.parser.PropInfo;
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.service.BaseService;
+import com.linsir.core.code.ResultCode;
+import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
+import com.linsir.core.mybatis.binding.parser.EntityInfoCache;
+import com.linsir.core.mybatis.binding.parser.ParserCache;
+import com.linsir.core.mybatis.binding.parser.PropInfo;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.service.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -99,7 +101,7 @@ public class ContextHolder implements ApplicationContextAware, ApplicationListen
             return null;
         }
         if(clazzInstances.size() > 1){
-            throw new InvalidUsageException("getBean({}.class) 识别到多个实例，请检查调用！", clazz.getSimpleName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"getBean({}.class) 识别到多个实例，请检查调用！", clazz.getSimpleName());
         }
         return clazzInstances.get(0);
     }

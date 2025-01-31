@@ -16,8 +16,8 @@
 
 package com.linsir.core.cloud.feign;
 
-import com.linsir.core.tool.convert.EnumToStringConverter;
-import com.linsir.core.tool.convert.StringToEnumConverter;
+import com.linsir.core.convert.EnumToStringConverter;
+import com.linsir.core.convert.StringToEnumConverter;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import feign.Contract;
 import feign.Feign;

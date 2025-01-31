@@ -3,17 +3,19 @@ package com.linsir.core.mybatis.binding.parser;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.exception.InvalidUsageException;
-import com.linsir.core.holder.ThreadLocalHolder;
+
+import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.Binder;
 import com.linsir.core.mybatis.binding.binder.BaseBinder;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.helper.ResultAssembler;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.S;
-import com.linsir.core.util.SqlExecutor;
-import com.linsir.core.util.V;
+
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.holder.ThreadLocalHolder;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.SqlExecutor;
+import com.linsir.core.mybatis.util.V;
 import org.apache.ibatis.jdbc.SQL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

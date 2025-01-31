@@ -1,15 +1,16 @@
 package com.linsir.core.mybatis.binding.helper;
 
 
-import com.linsir.core.config.BaseConfig;
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.binder.*;
 import com.linsir.core.mybatis.binding.parser.ConditionManager;
 import com.linsir.core.mybatis.binding.parser.FieldAnnotation;
-import com.linsir.core.service.DictionaryServiceExtProvider;
-import com.linsir.core.service.I18nConfigService;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.service.DictionaryServiceExtProvider;
+import com.linsir.core.mybatis.service.I18nConfigService;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;

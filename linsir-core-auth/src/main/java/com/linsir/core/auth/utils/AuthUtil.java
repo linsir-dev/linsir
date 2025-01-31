@@ -19,11 +19,11 @@ package com.linsir.core.auth.utils;
 
 import cn.hutool.jwt.Claims;
 import com.linsir.core.auth.LinsirUser;
+import com.linsir.core.constant.RoleConstant;
 import com.linsir.core.jwt.JwtUtil;
 import com.linsir.core.jwt.props.JwtProperties;
 import com.linsir.core.launch.constant.TokenConstant;
-import com.linsir.core.tool.constant.RoleConstant;
-import com.linsir.core.tool.utils.*;
+import com.linsir.core.utils.*;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Objects;

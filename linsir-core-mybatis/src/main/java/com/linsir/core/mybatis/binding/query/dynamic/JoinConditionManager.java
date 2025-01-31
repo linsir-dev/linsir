@@ -1,10 +1,11 @@
 package com.linsir.core.mybatis.binding.query.dynamic;
 
 
-import com.linsir.core.exception.InvalidUsageException;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.parser.BaseConditionManager;
-import com.linsir.core.util.S;
-import com.linsir.core.util.V;
+import com.linsir.core.mybatis.exception.InvalidUsageException;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.BinaryExpression;
 import net.sf.jsqlparser.expression.Expression;
@@ -32,7 +33,7 @@ public class JoinConditionManager extends BaseConditionManager {
         List<Expression> expressionList = getExpressionList(joiner.getCondition());
         if(V.isEmpty(expressionList)){
             log.warn("无法解析注解条件: {} ", joiner.getCondition());
-            throw new InvalidUsageException("无法解析注解条件: {}", joiner.getCondition());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法解析注解条件: {}", joiner.getCondition());
         }
         // 解析中间表关联
         String tableName = extractMiddleTableName(expressionList, joiner.getJoin());

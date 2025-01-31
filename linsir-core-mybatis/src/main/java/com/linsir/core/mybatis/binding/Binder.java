@@ -2,7 +2,7 @@ package com.linsir.core.mybatis.binding;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.linsir.core.vo.Pagination;
+import com.linsir.core.mybatis.vo.Pagination;
 
 import java.util.List;
 

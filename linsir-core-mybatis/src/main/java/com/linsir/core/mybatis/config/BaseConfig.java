@@ -15,6 +15,8 @@
  */
 package com.linsir.core.mybatis.config;
 
+import com.linsir.core.mybatis.util.PropertiesUtils;
+import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

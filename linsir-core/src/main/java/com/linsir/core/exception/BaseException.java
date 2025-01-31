@@ -2,6 +2,7 @@ package com.linsir.core.exception;
 
 
 import com.linsir.core.code.ICode;
+import com.linsir.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -21,14 +22,71 @@ public class BaseException extends RuntimeException implements IException{
      * 基础的
      */
     public BaseException() {
-            super();
+        super();
     }
 
     /**
      * 基础的
      */
-    public BaseException(String str) {
-        super(str);
+    public BaseException(String msg) {
+        super(msg);
+        log.error(msg);
+    }
+
+
+    /**
+     * 基础code
+     * @param code
+     */
+    public BaseException(ICode code) {
+        super(code.getMsg());
+        this.code = code;
+        logCode(code);
+    }
+
+
+    public BaseException(ICode code, Exception e) {
+        super(e);
+        this.code = code;
+        logCode(code);
+    }
+
+
+    /**
+     *
+     * @param msg
+     * @param code
+     */
+    public BaseException(String msg, ICode code) {
+        super(msg);
+        this.code = code;
+        logMsg(code,msg);
+    }
+
+
+    /**
+     *
+     * @param msg
+     * @param code
+     * @param args
+     */
+    public BaseException(ICode code,String msg,Object... args) {
+        super(StringUtil.format(msg, args));
+        this.code = code;
+        logMsg(code,msg);
+    }
+
+    /**
+     *
+     * @param ex
+     * @param msg
+     * @param code
+     * @param args
+     */
+    public BaseException(Throwable ex, String msg, ICode code, Object... args) {
+        super(StringUtil.format(msg, args), ex);
+        logMsg(code,msg);
+        this.code = code;
     }
 
     /**

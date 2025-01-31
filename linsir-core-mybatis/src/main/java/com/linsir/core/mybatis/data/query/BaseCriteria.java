@@ -1,7 +1,7 @@
 package com.linsir.core.mybatis.data.query;
 
 
-import com.linsir.core.binding.query.Comparison;
+import com.linsir.core.mybatis.binding.query.Comparison;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

@@ -1,7 +1,7 @@
 package com.linsir.core.mybatis.data.protect;
 
 
-import com.linsir.core.util.S;
+import com.linsir.core.mybatis.util.S;
 
 /**
  * description：数据脱敏默认处理器

@@ -17,7 +17,7 @@
 package com.linsir.core.log.utils;
 
 
-import com.linsir.core.tool.utils.StringPool;
+import com.linsir.core.utils.StringPool;
 
 import java.util.Properties;
 

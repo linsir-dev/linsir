@@ -17,13 +17,14 @@
 package com.linsir.core.log.error;
 
 import com.linsir.core.auth.exception.SecureException;
-import com.linsir.core.code.BaseCode;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.log.exception.ServiceException;
 import com.linsir.core.log.publisher.ErrorLogPublisher;
-import com.linsir.core.tool.utils.Func;
-import com.linsir.core.tool.utils.UrlUtil;
-import com.linsir.core.tool.utils.WebUtil;
-import com.linsir.core.vo.jsonResults.JsonResult;
+import com.linsir.core.log.vo.LogResult;
+import com.linsir.core.results.R;
+import com.linsir.core.utils.Func;
+import com.linsir.core.utils.UrlUtil;
+import com.linsir.core.utils.WebUtil;
 import jakarta.servlet.Servlet;
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,30 +54,25 @@ public class LinsirRestExceptionTranslator {
 
 	@ExceptionHandler(ServiceException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public JsonResult handleError(ServiceException e) {
+	public R handleError(ServiceException e) {
 		log.error("业务异常", e);
-		/*return R.fail(e.getResultCode(), e.getMessage());*/
-		return  JsonResult.FAIL_EXCEPTION(e.getMessage());
+		return  LogResult.FAIL_EXCEPTION(e.getMessage());
 	}
 
 	@ExceptionHandler(SecureException.class)
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-	public JsonResult handleError(SecureException e) {
+	public R handleError(SecureException e) {
 		log.error("认证异常", e);
-		/*return R.fail(e.getResultCode(), e.getMessage());*/
-		return JsonResult.FAIL_EXCEPTION(e.getMessage());
+		return  LogResult.FAIL_EXCEPTION(e.getMessage());
 	}
 
 	@ExceptionHandler(Throwable.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public JsonResult handleError(Throwable e) {
+	public R handleError(Throwable e) {
 		log.error("服务器异常", e);
 		// 发送服务异常事件
 		ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(WebUtil.getRequest().getRequestURI()));
-		return JsonResult.FAIL_EXCEPTION(Func.isEmpty(e.getMessage()) ? BaseCode.FAIL_EXCEPTION.getMsg() : e.getMessage());
-/*
-		return R.fail(ResultCode.INTERNAL_SERVER_ERROR, (Func.isEmpty(e.getMessage()) ? ResultCode.INTERNAL_SERVER_ERROR.getMessage() : e.getMessage()));
-*/
+		return LogResult.FAIL_EXCEPTION(Func.isEmpty(e.getMessage()) ? ResultCode.FAIL_EXCEPTION.getMsg() : e.getMessage());
 	}
 
 }

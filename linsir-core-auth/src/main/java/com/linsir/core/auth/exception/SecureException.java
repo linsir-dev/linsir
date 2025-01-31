@@ -16,8 +16,8 @@
  */
 package com.linsir.core.auth.exception;
 
-import com.linsir.core.code.BaseCode;
 import com.linsir.core.code.ICode;
+import com.linsir.core.code.ResultCode;
 import lombok.Getter;
 
 /**
@@ -33,7 +33,7 @@ public class SecureException extends RuntimeException {
 
 	public SecureException(String message) {
 		super(message);
-		this.resultCode = BaseCode.UNAUTHORIZED;
+		this.resultCode = ResultCode.UNAUTHORIZED;
 	}
 
 	public SecureException(ICode resultCode) {

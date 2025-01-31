@@ -1,6 +1,6 @@
 package com.linsir.core.mybatis.binding.binder.remote;
 
-import com.linsir.core.vo.jsonResults.JsonResult;
+import com.linsir.core.mybatis.vo.JsonResult;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**

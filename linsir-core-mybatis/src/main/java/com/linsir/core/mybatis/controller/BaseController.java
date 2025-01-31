@@ -2,23 +2,23 @@ package com.linsir.core.mybatis.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.linsir.core.binding.Binder;
-import com.linsir.core.binding.QueryBuilder;
-import com.linsir.core.binding.cache.BindingCacheManager;
-import com.linsir.core.binding.helper.WrapperHelper;
-import com.linsir.core.binding.parser.PropInfo;
-import com.linsir.core.config.BaseConfig;
-import com.linsir.core.data.query.BaseCriteria;
-import com.linsir.core.dto.RelatedDataDTO;
-import com.linsir.core.exception.BusinessException;
-import com.linsir.core.service.BaseService;
-import com.linsir.core.service.DictionaryService;
-import com.linsir.core.tool.constant.CommonConstant;
-import com.linsir.core.util.*;
-import com.linsir.core.vo.IResult;
-import com.linsir.core.vo.LabelValue;
-import com.linsir.core.vo.Pagination;
-import com.linsir.core.vo.jsonResults.JsonResult;
+
+import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.binding.Binder;
+import com.linsir.core.mybatis.binding.QueryBuilder;
+import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
+import com.linsir.core.mybatis.binding.helper.WrapperHelper;
+import com.linsir.core.mybatis.binding.parser.PropInfo;
+import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.data.query.BaseCriteria;
+import com.linsir.core.mybatis.dto.RelatedDataDTO;
+import com.linsir.core.mybatis.exception.BusinessException;
+import com.linsir.core.mybatis.service.BaseService;
+import com.linsir.core.mybatis.service.DictionaryService;
+import com.linsir.core.mybatis.util.*;
+import com.linsir.core.mybatis.vo.LabelValue;
+import com.linsir.core.mybatis.vo.Pagination;
+import com.linsir.core.results.R;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -49,9 +49,9 @@ public class BaseController {
      */
     protected DictionaryService dictionaryService;
 
-    protected IResult exec(String logName, ControllerCallable callable) throws Exception {
+    protected R exec(String logName, ControllerCallable callable) throws Exception {
         log.info(">>>log:>>>URL:"+request.getRequestURI()+logName);
-        IResult result =null;
+        R result =null;
         try {
             result = callable.execute();
         }
@@ -66,12 +66,12 @@ public class BaseController {
      * 不带日志
      *
      * */
-    protected JsonResult exec(JSONControllerCallable callable)
+    protected R exec(JSONControllerCallable callable)
     {
         log.info(">>>URL:"+getRequestMappingURI());
         log.info(">>>");
         dumpParams();
-        JsonResult jsonResult = null;
+        R jsonResult = null;
         try {
              jsonResult = callable.execute();
         } catch (Exception e) {

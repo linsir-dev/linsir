@@ -19,8 +19,8 @@ package com.linsir.core.cloud.hystrix;
 
 import com.linsir.core.auth.LinsirUser;
 import com.linsir.core.auth.utils.AuthUtil;
-import com.linsir.core.tool.utils.Charsets;
-import com.linsir.core.tool.utils.UrlUtil;
+import com.linsir.core.utils.Charsets;
+import com.linsir.core.utils.UrlUtil;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**

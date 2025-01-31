@@ -1,6 +1,6 @@
 package com.linsir.core.mybatis.controller;
 
-import com.linsir.core.vo.jsonResults.JsonResult;
+import com.linsir.core.results.R;
 
 /**
  * description:
@@ -12,5 +12,5 @@ import com.linsir.core.vo.jsonResults.JsonResult;
 @FunctionalInterface
 public interface JSONControllerCallable {
 
-    JsonResult execute() throws Exception;
+    R execute() throws Exception;
 }

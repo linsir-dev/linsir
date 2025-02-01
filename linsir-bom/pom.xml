@@ -35,6 +35,7 @@
         <linsir-core-jwt.version>1.2.0</linsir-core-jwt.version>
         <linsir-core-auth.version>1.2.0</linsir-core-auth.version>
         <linsir-core-cloud.version>1.2.0</linsir-core-cloud.version>
+        <linsir-core-mybatis.version>1.2.0</linsir-core-mybatis.version>
 
         <druid-spring-boot-3-starter.version>1.2.24</druid-spring-boot-3-starter.version>
         <disruptor.version>4.0.0</disruptor.version>
@@ -51,8 +52,8 @@
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
-        <mybatis-plus-spring-boot3-starter.version>3.5.4</mybatis-plus-spring-boot3-starter.version>
-        <mybatis-plus-extension.version>3.5.4</mybatis-plus-extension.version>
+        <mybatis-plus-spring-boot3-starter.version>3.5.5</mybatis-plus-spring-boot3-starter.version>
+        <mybatis-plus-extension.version>3.5.5</mybatis-plus-extension.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <jsqlparser.version>5.1</jsqlparser.version>
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
@@ -77,11 +78,6 @@
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-core-launch</artifactId>
                 <version>${linsir-core-launch.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.linsir</groupId>
-                <artifactId>linsir-core-tool</artifactId>
-                <version>${linsir-core-tool.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.linsir</groupId>
@@ -112,6 +108,11 @@
                 <groupId>com.linsir</groupId>
                 <artifactId>linsir-core-cloud</artifactId>
                 <version>${linsir-core-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.linsir</groupId>
+                <artifactId>linsir-core-mybatis</artifactId>
+                <version>${linsir-core-mybatis.version}</version>
             </dependency>
             <!-- end linsir-->
             <dependency>

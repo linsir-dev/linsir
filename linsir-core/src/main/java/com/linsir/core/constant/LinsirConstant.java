@@ -21,6 +21,7 @@ package com.linsir.core.constant;
  *
  * @author Chill
  */
+@Deprecated
 public interface LinsirConstant {
 
 	/**

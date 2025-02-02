@@ -8,6 +8,7 @@ import com.linsir.core.utils.Func;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.StringValue;
+import org.springframework.stereotype.Component;
 
 /**
  * description：租户句柄
@@ -16,6 +17,7 @@ import net.sf.jsqlparser.expression.StringValue;
  * date       ：2025/2/1 21:22
  */
 @Slf4j
+@Component
 public class LinsirTenantLineHandler implements TenantLineHandler {
 
     private MybatisPlusProperties properties;
@@ -47,12 +49,19 @@ public class LinsirTenantLineHandler implements TenantLineHandler {
     public boolean ignoreTable(String tableName) {
         /*默认是需要插入 tenant_code*/
         boolean result = false;
+
+        String ignoreTables = properties.getIgnoreTables();
+
         if (tableName.startsWith("sys_")) {
             log.info("表：{},以sys_开头，默认为系统表", tableName);
             result = true;
         }
-        if (properties.getIgnoreTables().contains(tableName)) {
-            return true;
+        if (ignoreTables!=null)
+        {
+            if (ignoreTables.contains(tableName))
+            {
+                result = true;
+            }
         }
         return result;
     }

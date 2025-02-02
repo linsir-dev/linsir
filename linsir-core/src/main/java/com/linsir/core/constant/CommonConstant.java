@@ -7,6 +7,7 @@ package com.linsir.core.constant;
  * @modified By：
  * @version: 0.0.1
  */
+@Deprecated
 public interface CommonConstant {
 
     /**

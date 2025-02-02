@@ -503,7 +503,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
     public List<T> getEntityList(Wrapper queryWrapper, Pagination pagination) {
         // 如果是动态join，则调用JoinsBinder
         if(queryWrapper instanceof DynamicJoinQueryWrapper){
-            return Binder.joinQueryList((DynamicJoinQueryWrapper)queryWrapper, entityClass, pagination);
+            return Binder.joinQueryList((DynamicJoinQueryWrapper)queryWrapper, getEntityClass(), pagination);
         }
         // 否则，调用MP默认实现
         if(pagination != null){
@@ -737,7 +737,7 @@ public abstract class BaseServiceImpl<M extends BaseCrudMapper<T>,T> extends Ser
      * @return
      */
     protected Page<T> convertToIPage(Wrapper queryWrapper, Pagination pagination){
-        return ServiceAdaptor.convertToIPage(pagination, entityClass);
+        return ServiceAdaptor.convertToIPage(pagination, getEntityClass());
     }
 
     /**

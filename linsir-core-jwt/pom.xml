@@ -31,5 +31,9 @@
             <groupId>com.linsir</groupId>
             <artifactId>linsir-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
     </dependencies>
 </project>

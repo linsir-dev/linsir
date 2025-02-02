@@ -56,7 +56,12 @@ public interface LinsirConstant {
 	/**
 	 * 租户字段名
 	 */
-	String DB_TENANT_KEY = "tenantId";
+	String DB_TENANT_KEY = "tenantCode";
+
+	/**
+	 * 租户数据库的字段名称
+	 * */
+	String DB_TENANT_COLUMN = "tenant_code";
 
 	/**
 	 * 租户字段get方法

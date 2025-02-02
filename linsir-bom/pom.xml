@@ -52,12 +52,15 @@
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
-        <mybatis-plus-spring-boot3-starter.version>3.5.5</mybatis-plus-spring-boot3-starter.version>
-        <mybatis-plus-extension.version>3.5.5</mybatis-plus-extension.version>
+        <mybatis-plus-spring-boot3-starter.version>3.5.10</mybatis-plus-spring-boot3-starter.version>
+        <mybatis-plus-extension.version>3.5.10</mybatis-plus-extension.version>
+        <mybatis-plus-jsqlparser.version>3.5.10</mybatis-plus-jsqlparser.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <jsqlparser.version>5.1</jsqlparser.version>
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
+        <jedis.version>5.2.0</jedis.version>
+
     </properties>
 
 
@@ -202,14 +205,14 @@
                 <version>${mybatis-plus-extension.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus-jsqlparser.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.jsqlparser</groupId>
-                <artifactId>jsqlparser</artifactId>
-                <version>${jsqlparser.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.mysql</groupId>
@@ -220,6 +223,11 @@
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>${jakarta.validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

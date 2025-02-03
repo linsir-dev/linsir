@@ -42,6 +42,9 @@ public interface TypeConstant {
     /*树根节点*/
     public static final String TREE_ROOT_ID = "0";
 
+    /*id空的默认值，避免null*/
+    public static final String ID_PREVENT_NULL = "0";
+
     /*------------------菜单类型 相关---------------------*/
     /*0：一级菜单*/
     public static final Integer MENU_TYPE_0  = 0;
@@ -219,4 +222,19 @@ public interface TypeConstant {
     /**前端vue版本*/
     String VERSION_VUE3="vue3";
 
+
+    /**
+     * 字典的缓存key
+     */
+    public static String CACHE_NAME_DICTIONARY = "linsir:dictionary";
+
+    /**
+     * 国际化缓存
+     */
+    public static String CACHE_NAME_I18N = "linsir:i18n";
+
+    /**
+     * 系统配置缓存
+     */
+    public static String CACHE_NAME_SYSTEM_CONFIG = "linsir:system-config";
 }

@@ -37,6 +37,8 @@ public interface FieldConstant {
     public static final String COLUMN_UPDATE_BY = "updated_by";
     public static final String UPDATE_BY = "updatedBy";
 
+    public static final String PARENT_ID="parent_id";
+
     /**
      * 租户数据库的字段名称
      * */

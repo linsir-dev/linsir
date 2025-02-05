@@ -43,7 +43,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName(value = "dbt_dictionary", autoResultMap = true)
+@TableName(value = "dictionary", autoResultMap = true)
 public class Dictionary extends BaseEntity<String> {
     private static final long serialVersionUID = 11301L;
 

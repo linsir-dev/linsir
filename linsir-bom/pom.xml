@@ -5,7 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.4</version>
+        <version>3.4.1</version>
+        <!--兼容mybatis 特意升级 springboot 到 3.4.1-->
         <relativePath/>
     </parent>
 

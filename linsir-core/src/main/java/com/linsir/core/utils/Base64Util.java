@@ -21,7 +21,7 @@ package com.linsir.core.utils;
  *
  * @author L.cm
  */
-public class Base64Util extends org.springframework.util.Base64Utils {
+public class Base64Util extends Base64Utils {
 
 	/**
 	 * 编码

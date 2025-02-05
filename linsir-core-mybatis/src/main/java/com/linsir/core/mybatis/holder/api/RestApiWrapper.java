@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * 接口定义类wrapper
+ * @author Mazhicheng
  * @version v2.0
  * @date 2020/02/28
  */

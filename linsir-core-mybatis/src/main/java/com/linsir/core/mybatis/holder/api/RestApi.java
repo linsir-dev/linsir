@@ -24,6 +24,7 @@ import java.util.List;
 
 /**
 * rest接口定义
+* @author mazc@dibo.ltd
 * @version 2.0
 * @date 2019-12-03
 */

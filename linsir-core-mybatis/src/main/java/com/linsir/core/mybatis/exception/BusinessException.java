@@ -1,108 +1,131 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.exception;
 
+import com.linsir.core.mybatis.util.I18n;
+import com.linsir.core.mybatis.util.S;
+import com.linsir.core.mybatis.vo.Status;
 
-import com.linsir.core.code.ICode;
-import com.linsir.core.code.ResultCode;
-import com.linsir.core.exception.BaseException;
-import lombok.extern.slf4j.Slf4j;
-
-import java.io.Serial;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * description：业务异常
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/30 17:12
+ * 通用的业务异常类 BusinessException
+ * (json形式返回值同JsonResult，便于前端统一处理)
+ *
+ * @author : wee
+ * @version : v2.0
+ * @Date 2019-07-11  11:10
  */
+public class BusinessException extends RuntimeException {
+    private static final long serialVersionUID = 6947618826898130771L;
 
-@Slf4j
-public class BusinessException extends BaseException {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private Integer code;
 
     /**
-     * 默认异常
+     * 错误的状态
      */
-    public BusinessException()
-    {
-        super();
-    }
+    private Status status;
 
     /**
-     * 附加消息
-     * @param msg
+     * 默认：操作失败
      */
-    public BusinessException(String msg)
-    {
-        super(msg);
+    public BusinessException() {
+        super(Status.FAIL_OPERATION.label());
+        this.status = Status.FAIL_OPERATION;
     }
 
     /**
-     * 默认code 异常
-     * @param code
+     * 自定义状态码
      */
-    public BusinessException(ICode code)
-    {
-        super(code);
-    }
-
-    public BusinessException(ICode code, Exception e)
-    {
-        super(code,e);
+    public BusinessException(Status status) {
+        super(status.label());
+        this.status = status;
     }
 
     /**
-     *
-     * @param msg
-     * @param code
+     * 自定义状态码和异常
      */
-    public BusinessException(String msg, ICode code)
-    {
-        super(msg, code);
+    public BusinessException(Status status, Throwable ex) {
+        super(status.label(), ex);
+        this.status = status;
     }
 
     /**
-     *
-     * @param msg
-     * @param code
-     * @param args
+     * 自定义状态码和内容提示
      */
-    public BusinessException( ICode code,String msg, Object... args)
-    {
-        super(code, msg, args);
-    }
-
-
-    /**
-     *
-     * @param ex
-     * @param msg
-     * @param code
-     * @param args
-     */
-    public BusinessException(Throwable ex, String msg, ICode code, Object... args)
-    {
-        super(ex, msg, code, args);
-    }
-
-
-    /**
-     * 默认的 业务异常
-     * @return
-     */
-    public static BusinessException getBusinessException()
-    {
-        return new BusinessException(ResultCode.FAIL_OPERATION);
+    public BusinessException(Status status, String msg, Object... args) {
+        super(status.label() + ": " + S.format(I18n.message(msg, args), args));
+        this.status = status;
     }
 
     /**
-     * 默认业务异常操作
-     * @param msg
-     * @return
+     * 自定义状态码和内容提示
      */
-    public static BusinessException getBusinessException(String msg)
-    {
-        return new BusinessException(msg, ResultCode.FAIL_OPERATION);
+    public BusinessException(int code, String msg) {
+        super(I18n.message(msg));
+        this.code = code;
     }
+
+    /**
+     * 自定义内容提示
+     */
+    public BusinessException(String msg, Object... args) {
+        super(S.format(I18n.message(msg, args), args));
+        this.status = Status.FAIL_OPERATION;
+    }
+
+    /**
+     * 自定义内容提示
+     */
+    public BusinessException(Status status, Throwable ex, String msg, Object... args) {
+        super(status.label() + ": " + S.format(I18n.message(msg, args), args), ex);
+        this.status = status;
+    }
+
+    /**
+     * 自定义内容提示
+     */
+    public BusinessException(int code, Throwable ex, String msg, Object... args) {
+        super(S.format(I18n.message(msg, args), args), ex);
+        this.code = code;
+    }
+
+    /**
+     * 转换为Map
+     */
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>(8);
+        map.put("code", getCode());
+        map.put("msg", getMessage());
+        return map;
+    }
+
+    /**
+     * 获取status，以便复用
+     */
+    public Status getStatus() {
+        return this.status;
+    }
+
+    private Integer getCode() {
+        if (this.code == null && this.status != null) {
+            this.code = this.status.code();
+        }
+        return this.code;
+    }
+
 }

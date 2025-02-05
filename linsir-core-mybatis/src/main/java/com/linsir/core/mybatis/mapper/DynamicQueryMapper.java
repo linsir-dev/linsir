@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -13,14 +28,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author ：linsir
- * @date ：Created in 2022/3/23 13:32
- * @description：通用联表查询Mapper
- * @modified By：
- * @version:
+ * 通用联表查询Mapper
+ * @author mazc@dibo.ltd
+ * @version 2018/12/22
  */
 @Mapper
 public interface DynamicQueryMapper {
+
     /**
      * 动态SQL查询
      * @return
@@ -35,4 +49,5 @@ public interface DynamicQueryMapper {
      */
     @SelectProvider(type= DynamicSqlProvider.class, method="buildSqlForListWithPage")
     IPage<Map<String, Object>> queryForListWithPage(Page<?> page, @Param(Constants.WRAPPER) QueryWrapper ew);
+
 }

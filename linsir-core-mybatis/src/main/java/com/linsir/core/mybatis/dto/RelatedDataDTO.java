@@ -1,24 +1,28 @@
 package com.linsir.core.mybatis.dto;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.linsir.core.mybatis.controller.BaseController;
 import com.linsir.core.mybatis.data.query.BaseCriteria;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
- * description：用于加载关联数据传递的DTO格式
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/15 1:39
+ * 用于加载关联数据传递的DTO格式
+ *
+ * @author mazc@dibo.ltd
+ * @version v2.0
+ * @date 2018/12/27
  */
 @Getter
 @Setter
@@ -46,8 +50,7 @@ public class RelatedDataDTO implements Serializable {
 
     /**
      * <h3>筛选条件</h3>
-     * 可重写{  BaseController # buildRelatedDataCondition
-     * (RelatedDataDTO, QueryWrapper, Function)} (RelatedDataDTO, QueryWrapper, Function)}进行自定义筛选条件规则
+     * 可重写{@link BaseController#buildRelatedDataCondition(RelatedDataDTO, QueryWrapper, Function)} (RelatedDataDTO, QueryWrapper, Function)}进行自定义筛选条件规则
      */
     @Deprecated
     private Map<String, Object> condition;
@@ -109,4 +112,3 @@ public class RelatedDataDTO implements Serializable {
     }
 
 }
-

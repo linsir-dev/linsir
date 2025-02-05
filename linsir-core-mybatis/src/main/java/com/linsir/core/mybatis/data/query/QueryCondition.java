@@ -1,13 +1,27 @@
+/*
+ * Copyright (c) 2015-2029, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.data.query;
-
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.parser.EntityInfoCache;
 import com.linsir.core.mybatis.binding.query.Comparison;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.BeanUtils;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
@@ -21,11 +35,13 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 /**
- * description：查询条件
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/15 1:37
+ * 查询条件
+ * @author JerryMa
+ * @version v3.0.0
+ * @date 2023/2/15
+ * Copyright © diboot.com
  */
 @Slf4j
 @Accessors(chain = true)
@@ -78,7 +94,7 @@ public class QueryCondition implements Serializable {
         }
     }
 
-    public <T,FT> QueryCondition select(SFunction<T,FT>... fieldGetters) {
+    public <T,FT> QueryCondition select(SFunction<T,FT> ... fieldGetters) {
         if(selectFields == null) {
             selectFields = new ArrayList<>();
         }
@@ -258,7 +274,7 @@ public class QueryCondition implements Serializable {
         if(this.orderItems == null) {
             this.orderItems = new ArrayList<>();
         }
-        this.orderItems.add(fieldName + CommonConstant.SEPARATOR_COLON + CommonConstant.ORDER_DESC);
+        this.orderItems.add(fieldName + Cons.SEPARATOR_COLON + Cons.ORDER_DESC);
         return this;
     }
 
@@ -455,7 +471,7 @@ public class QueryCondition implements Serializable {
         else {
             String orderByStr = this.pagination.getOrderBy();
             if(V.notEmpty(orderByStr)) {
-                this.orderItems = S.splitToList(orderByStr, CommonConstant.SEPARATOR_COMMA);
+                this.orderItems = S.splitToList(orderByStr, Cons.SEPARATOR_COMMA);
             }
             else {
                 this.orderItems = Collections.singletonList(Pagination.ORDER_BY_ID_DESC);
@@ -569,7 +585,7 @@ public class QueryCondition implements Serializable {
                 if (field.contains(":")) {
                     String[] fieldAndOrder = S.split(field, ":");
                     String columnName = entityInfo.getColumnByField(fieldAndOrder[0]);
-                    if (CommonConstant.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
+                    if (Cons.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
                         query.orderByDesc(columnName);
                     } else {
                         query.orderByAsc(columnName);
@@ -593,4 +609,3 @@ public class QueryCondition implements Serializable {
         return false;
     }
 }
-

@@ -1,47 +1,49 @@
+/*
+ * Copyright (c) 2015-2021, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.BeanUtils;
 import com.linsir.core.mybatis.util.ContextHolder;
 import com.linsir.core.mybatis.util.JSON;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Map;
 
 /**
- * @author linsir
- * @title: AbstractEntity
- * @projectName linsir
- * @description: Entity抽象父类
- * @date 2022/3/19 23:05
- *
- * 下面介绍几个我常用的 lombok 注解：
- * @Data   ：注解在类上；提供类所有属性的 getting 和 setting 方法，此外还提供了equals、canEqual、hashCode、toString 方法
- * @Setter：注解在属性上:为属性提供 setting 方法,       注解再类上表示当前类中所有属性都生成setter方法
- * @Getter：注解在属性上：为属性提供 getting 方法， 注解再类上表示当前类中所有属性都生成getter方法
- * @Log4j ：注解在类上；为类提供一个 属性名为log 的 log4j 日志对象
- * @NoArgsConstructor：注解在类上；为类提供一个无参的构造方法
- * @AllArgsConstructor：注解在类上；为类提供一个全参的构造方法
- *
- *
+ * Entity抽象父类
+ * @author Yangzhao@dibo.ltd
+ * @version v2.0
+ * Copyright © diboot.com
  */
-@Data
-public abstract class AbstractEntity<T extends Serializable>  implements Serializable{
+@Getter @Setter @Accessors(chain = true)
+public abstract class AbstractEntity<T extends Serializable> implements Serializable {
+    private static final long serialVersionUID = 10202L;
 
-    private static final long serialVersionUID = -3213747504298736681L;
-    /** 主键  默认主键字段id，类型为Long型雪花，转json时转换为String*/
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    /**
+     * 默认主键id，类型为String型雪花算法ID
+     */
+    @TableId(type = IdType.ASSIGN_ID)
     private T id;
-
 
     /**
      * 获取主键值
@@ -53,12 +55,11 @@ public abstract class AbstractEntity<T extends Serializable>  implements Seriali
         if(pk == null){
             return null;
         }
-        if(CommonConstant.FieldName.id.name().equals(pk)){
+        if(Cons.FieldName.id.name().equals(pk)){
             return getId();
         }
         return BeanUtils.getProperty(this, pk);
     }
-
 
     /**
      * Entity对象转为String
@@ -77,34 +78,4 @@ public abstract class AbstractEntity<T extends Serializable>  implements Seriali
         String jsonStr = JSON.stringify(this);
         return JSON.toMap(jsonStr);
     }
-    /** 创建人 */
-    @TableField(fill = FieldFill.INSERT)
-    private String createdBy ;
-
-
-    /** 创建时间 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(shape =JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
-    @TableField(fill = FieldFill.INSERT)
-    private Date createdTime ;
-    /** 更新人 */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updatedBy ;
-
-    /** 更新时间 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(shape =JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updatedTime ;
-
-    public AbstractEntity setId(T id){
-        this.id = id;
-        return this;
-    }
-
-    public T getId(){
-        return this.id;
-    }
-
-
 }

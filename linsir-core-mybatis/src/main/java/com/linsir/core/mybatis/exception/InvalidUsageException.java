@@ -1,109 +1,67 @@
-
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.exception;
 
-
-
-import com.linsir.core.code.ICode;
-import com.linsir.core.code.ResultCode;
-import com.linsir.core.exception.BaseException;
 import com.linsir.core.mybatis.util.S;
-import lombok.extern.slf4j.Slf4j;
 
-import java.io.Serial;
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 无效使用异常类 InvalidUsageException
  *
- *  无效操作类
- * @author : linsir
- * @version : v1.2.0
- * @date 2025/01/25
+ * @author : wind
+ * @version : v2.3.1
+ * @date 2021/08/23
  */
-@Slf4j
-public class InvalidUsageException extends BaseException {
-
-    @Serial
+public class InvalidUsageException extends RuntimeException {
     private static final long serialVersionUID = -1203618387183809985L;
 
     /**
-     * 默认异常
-     */
-    public InvalidUsageException()
-    {
-        super();
-    }
-
-    /**
-     * 附加消息
-     * @param msg
-     */
-    public InvalidUsageException(String msg)
-    {
-        super(msg);
-    }
-
-    /**
-     * 默认code 异常
-     * @param code
-     */
-    public InvalidUsageException(ICode code)
-    {
-        super(code);
-    }
-
-    /**
+     * 自定义内容提示
      *
      * @param msg
-     * @param code
      */
-    public InvalidUsageException(String msg, ICode code)
-    {
-        super(msg, code);
+    public InvalidUsageException(String msg, Object... args) {
+        super(S.format(msg, args));
     }
 
     /**
+     * 自定义内容提示
      *
      * @param msg
-     * @param code
-     * @param args
      */
-    public InvalidUsageException( ICode code, String msg,Object... args)
-    {
-        super(code, msg, args);
+    public InvalidUsageException(Throwable ex, String msg, Object... args) {
+        super(S.format(msg, args), ex);
     }
 
-
     /**
+     * 转换为Map
      *
-     * @param ex
-     * @param msg
-     * @param code
-     * @param args
-     */
-    public InvalidUsageException(Throwable ex, String msg, ICode code, Object... args)
-    {
-        super(ex, msg, code, args);
-    }
-
-
-    /**
-     * 默认的无效的异常
      * @return
      */
-    public static InvalidUsageException getInvalidUsageException()
-    {
-        return new InvalidUsageException(ResultCode.INVALID_OPERATION);
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>(8);
+        map.put("code", getCode());
+        map.put("msg", getMessage());
+        return map;
     }
 
-    /**
-     * 根据信息获取默认的异常
-     * @param msg
-     * @return
-     */
-    public static InvalidUsageException getInvalidUsageException(String msg)
-    {
-        return new InvalidUsageException(msg, ResultCode.INVALID_OPERATION);
+    private int getCode() {
+        return 5005;
     }
 
 }

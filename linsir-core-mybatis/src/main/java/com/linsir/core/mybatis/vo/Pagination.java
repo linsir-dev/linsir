@@ -17,10 +17,10 @@ package com.linsir.core.mybatis.vo;
 
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 import lombok.Getter;
@@ -63,11 +63,11 @@ public class Pagination implements Serializable {
     /**
      * 默认排序 - ID降序
      */
-    public static final String ORDER_BY_ID_DESC = CommonConstant.FieldName.id.name() + ":" + CommonConstant.ORDER_DESC;
+    public static final String ORDER_BY_ID_DESC = Cons.FieldName.id.name() + ":" + Cons.ORDER_DESC;
     /**
      * 默认排序 - 创建时间降序
      */
-    public static final String ORDER_BY_CREATE_TIME_DESC = CommonConstant.FieldName.createTime.name() + ":" + CommonConstant.ORDER_DESC;
+    public static final String ORDER_BY_CREATE_TIME_DESC = Cons.FieldName.createTime.name() + ":" + Cons.ORDER_DESC;
 
     /**
      * 排序
@@ -141,7 +141,7 @@ public class Pagination implements Serializable {
                             columnName = fieldName;
                         }
                     }
-                    if (CommonConstant.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
+                    if (Cons.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
                         orderItemList.add(OrderItem.desc(columnName));
                     } else {
                         orderItemList.add(OrderItem.asc(columnName));
@@ -168,6 +168,6 @@ public class Pagination implements Serializable {
      * @return
      */
     public static boolean isPaginationParam(String paramName){
-        return CommonConstant.PaginationParam.isPaginationParam(paramName);
+        return Cons.PaginationParam.isPaginationParam(paramName);
     }
 }

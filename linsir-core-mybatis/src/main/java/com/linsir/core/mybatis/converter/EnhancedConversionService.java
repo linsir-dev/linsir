@@ -27,6 +27,7 @@ import java.util.List;
  * @author JerryMa
  * @version v2.6.0
  * @date 2022/5/11
+ * Copyright © diboot.com
  */
 @Slf4j
 public class EnhancedConversionService extends DefaultConversionService {

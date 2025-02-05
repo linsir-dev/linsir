@@ -15,7 +15,6 @@
  */
 package com.linsir.core.mybatis.converter;
 
-
 import com.linsir.core.mybatis.util.JSON;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;

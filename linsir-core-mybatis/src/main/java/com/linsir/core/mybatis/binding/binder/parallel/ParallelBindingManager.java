@@ -1,11 +1,26 @@
+/*
+ * Copyright (c) 2015-2021, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.binder.parallel;
 
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.binder.*;
 import com.linsir.core.mybatis.binding.parser.ConditionManager;
 import com.linsir.core.mybatis.binding.parser.FieldAnnotation;
-import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.service.DictionaryServiceExtProvider;
+import com.linsir.core.mybatis.service.I18nConfigService;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
@@ -17,19 +32,23 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * @author ：linsir
- * @date ：Created in 2022/3/22 11:01
- * @description：并行绑定Manager
- * @modified By：
- * @version: 0.0.1
+ * 并行绑定Manager（已废弃）
+ * @see com.diboot.core.binding.helper.RelationsBindingManager
+ * @author JerryMa
+ * @version v2.4.0
+ * @date 2021/11/16
+ * Copyright © diboot.com
  */
-
+@Deprecated
 @Slf4j
 @Component
-@Deprecated
 public class ParallelBindingManager {
+
     @Autowired(required = false)
     private DictionaryServiceExtProvider dictionaryServiceExtProvider;
+
+    @Autowired(required = false)
+    private I18nConfigService i18nConfigService;
 
     /**
      * 绑定字典
@@ -37,8 +56,7 @@ public class ParallelBindingManager {
      * @param fieldAnno
      * @return
      */
-    @Async
-    public CompletableFuture<Boolean> doBindingDict(List voList, FieldAnnotation fieldAnno){
+    public void doBindingDict(List voList, FieldAnnotation fieldAnno){
         if(dictionaryServiceExtProvider != null){
             BindDict annotation = (BindDict) fieldAnno.getAnnotation();
             String dictValueField = annotation.field();
@@ -50,12 +68,11 @@ public class ParallelBindingManager {
             dictionaryServiceExtProvider.bindItemLabel(voList, fieldAnno.getFieldName(), dictValueField, annotation.type());
         }
         else{
-            throw new InvalidUsageException("BindDictService未实现，无法使用BindDict注解！");
+            log.warn("BindDictService未实现，无法使用BindDict注解！");
         }
-        return CompletableFuture.completedFuture(true);
     }
 
-    /***
+    /**
      * 绑定Field
      * @param voList
      * @param fieldAnnotations
@@ -72,7 +89,7 @@ public class ParallelBindingManager {
         return doBinding(binder, bindAnnotation.condition());
     }
 
-    /***
+    /**
      * 绑定FieldList
      * @param voList
      * @param fieldAnnotations
@@ -89,7 +106,7 @@ public class ParallelBindingManager {
         return doBinding(binder, bindAnnotation.condition());
     }
 
-    /***
+    /**
      * 绑定Entity
      * @param voList
      * @param fieldAnnotation
@@ -105,7 +122,7 @@ public class ParallelBindingManager {
         return doBinding(binder, annotation.condition());
     }
 
-    /***
+    /**
      * 绑定EntityList
      * @param voList
      * @param fieldAnnotation
@@ -120,7 +137,7 @@ public class ParallelBindingManager {
         return doBinding(binder, annotation.condition());
     }
 
-    /***
+    /**
      * 绑定count计数
      * @param voList
      * @param fieldAnnotation
@@ -134,6 +151,23 @@ public class ParallelBindingManager {
         binder.set(fieldAnnotation.getFieldName(), fieldAnnotation.getFieldClass());
         // 解析条件并且执行绑定
         return doBinding(binder, annotation.condition());
+    }
+
+    /**
+     * 绑定国际化
+     *
+     * @param voList
+     * @param fieldAnnotation
+     */
+    public void doBindingI18n(List voList, FieldAnnotation fieldAnnotation) {
+        BindI18n annotation = (BindI18n) fieldAnnotation.getAnnotation();
+        String i18nCodeField = annotation.value();
+        if (i18nConfigService != null) {
+            // 国际化绑定接口化
+            i18nConfigService.bindI18nContent(voList, i18nCodeField, fieldAnnotation.getFieldName());
+        } else {
+            log.warn("I18nConfigService未初始化，无法翻译I18n注解: {}", i18nCodeField);
+        }
     }
 
     /**

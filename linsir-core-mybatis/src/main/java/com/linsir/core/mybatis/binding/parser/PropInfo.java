@@ -1,6 +1,5 @@
 package com.linsir.core.mybatis.binding.parser;
 
-
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -23,10 +22,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * description：Bean相关信息缓存
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:43
+ * Bean相关信息缓存
+ * @author JerryMa
+ * @version v2.2.1
+ * @date 2021/4/20
+ * Copyright © diboot.com
  */
 @Slf4j
 @Getter

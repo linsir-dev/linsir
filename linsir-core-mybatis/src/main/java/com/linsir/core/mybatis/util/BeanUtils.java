@@ -20,15 +20,13 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.core.toolkit.support.LambdaMeta;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.linsir.core.code.ResultCode;
-import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.converter.EnhancedConversionService;
 import com.linsir.core.mybatis.data.copy.AcceptAnnoCopier;
 import com.linsir.core.mybatis.entity.BaseEntity;
 import com.linsir.core.mybatis.exception.BusinessException;
 import com.linsir.core.mybatis.vo.LabelValue;
-import com.linsir.core.utils.IGetter;
-import com.linsir.core.utils.ISetter;
+import com.linsir.core.mybatis.vo.Status;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.slf4j.Logger;
@@ -77,7 +75,7 @@ public class BeanUtils {
      * 忽略对比的字段
      */
     private static final Set<String> IGNORE_FIELDS = new HashSet<String>(){{
-        add(CommonConstant.FieldName.createTime.name());
+        add(Cons.FieldName.createTime.name());
     }};
 
     /**
@@ -456,7 +454,7 @@ public class BeanUtils {
             String key = null;
             if (isFieldsEmpty) {
                 //未指定字段，以id为key
-                return getStringProperty(model, CommonConstant.FieldName.id.name());
+                return getStringProperty(model, Cons.FieldName.id.name());
             }
             // 指定了一个字段，以该字段为key，类型同该字段
             else if (isFieldsOnlyOne) {
@@ -492,7 +490,7 @@ public class BeanUtils {
      * @return
      */
     public static <T> List<T> buildTree(List<T> allNodes, Object rootNodeId) {
-        return buildTree(allNodes, rootNodeId, CommonConstant.FieldName.id.name());
+        return buildTree(allNodes, rootNodeId, Cons.FieldName.id.name());
     }
 
     /**
@@ -505,7 +503,7 @@ public class BeanUtils {
      * @return
      */
     public static <T> List<T> buildTree(List<T> allNodes, Object rootNodeId, String idFieldName) {
-        return buildTree(allNodes, rootNodeId, idFieldName, CommonConstant.FieldName.parentId.name(), CommonConstant.FieldName.children.name());
+        return buildTree(allNodes, rootNodeId, idFieldName, Cons.FieldName.parentId.name(), Cons.FieldName.children.name());
     }
 
     /**
@@ -529,7 +527,7 @@ public class BeanUtils {
             Object parentId = getProperty(node, parentIdFieldName);
             Object nodeId = getProperty(node, idFieldName);
             if (V.equals(nodeId, parentId)) {
-                throw new BusinessException(ResultCode.WARN_PERFORMANCE_ISSUE, "parentId关联自身，请检查！" + node.getClass().getSimpleName() + ":" + nodeId);
+                throw new BusinessException(Status.WARN_PERFORMANCE_ISSUE, "parentId关联自身，请检查！" + node.getClass().getSimpleName() + ":" + nodeId);
             }
             parentId2ListMap.computeIfAbsent(parentId, k -> new ArrayList<>()).add(node);
         }
@@ -607,7 +605,7 @@ public class BeanUtils {
             Object nodeId = getId.apply(node);
             Object parentId = getParentId.apply(node);
             if (V.equals(nodeId, parentId)) {
-                throw new BusinessException(ResultCode.WARN_PERFORMANCE_ISSUE, "exception.business.beanUtils.buildTree.bindSelf", node.getClass().getSimpleName(), nodeId);
+                throw new BusinessException(Status.WARN_PERFORMANCE_ISSUE, "exception.business.beanUtils.buildTree.bindSelf", node.getClass().getSimpleName(), nodeId);
             }
             parentId2ListMap.computeIfAbsent(parentId, k -> new ArrayList<>()).add(node);
         }
@@ -747,7 +745,7 @@ public class BeanUtils {
         if(V.isEmpty(objectList)){
             return Collections.emptyList();
         }
-        return collectToList(objectList, CommonConstant.FieldName.id.name());
+        return collectToList(objectList, Cons.FieldName.id.name());
     }
 
     /**

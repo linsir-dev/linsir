@@ -1,11 +1,11 @@
 package com.linsir.core.mybatis.binding.binder.remote;
 
-
 /**
- * description：远程绑定工厂类
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:04
+ * 远程绑定工厂类
+ * @author JerryMa
+ * @version v3.0.0
+ * @date 2023/1/10
+ * Copyright © diboot.com
  */
 public interface RemoteBindingProviderFactory {
 

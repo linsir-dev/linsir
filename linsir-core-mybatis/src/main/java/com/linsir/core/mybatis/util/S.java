@@ -1,8 +1,22 @@
-
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.util;
 
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.config.Cons;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -24,7 +38,7 @@ public class S extends StringUtils{
 	/**
 	 * 默认分隔符 ,
  	 */
-	public static final String SEPARATOR = CommonConstant.SEPARATOR_COMMA;
+	public static final String SEPARATOR = Cons.SEPARATOR_COMMA;
 
 	/**
 	 * 裁剪字符串，显示前部分+...
@@ -172,7 +186,7 @@ public class S extends StringUtils{
 		for (char c : chars){
 			if(Character.isUpperCase(c)){
 				if(sb.length() > 0){
-					sb.append(CommonConstant.SEPARATOR_UNDERSCORE);
+					sb.append(Cons.SEPARATOR_UNDERSCORE);
 				}
 			}
 			sb.append(Character.toLowerCase(c));
@@ -190,7 +204,7 @@ public class S extends StringUtils{
 			return null;
 		}
 		// 不包含_
-		if(!snakeCaseStr.contains(CommonConstant.SEPARATOR_UNDERSCORE)){
+		if(!snakeCaseStr.contains(Cons.SEPARATOR_UNDERSCORE)){
 			// 全大写直接return小写
 			if(snakeCaseStr.toUpperCase().equals(snakeCaseStr)){
 				return snakeCaseStr.toLowerCase();
@@ -202,7 +216,7 @@ public class S extends StringUtils{
 		}
 		// 包含_
 		StringBuilder sb = null;
-		String[] words = snakeCaseStr.split(CommonConstant.SEPARATOR_UNDERSCORE);
+		String[] words = snakeCaseStr.split(Cons.SEPARATOR_UNDERSCORE);
 		for(String word : words){
 			if(V.isEmpty(word)){
 				continue;
@@ -214,8 +228,8 @@ public class S extends StringUtils{
 				sb.append(word.substring(0, 1).toUpperCase()).append(word.substring(1).toLowerCase());
 			}
 		}
-		if (snakeCaseStr.endsWith(CommonConstant.SEPARATOR_UNDERSCORE) && sb != null) {
-			sb.append(CommonConstant.SEPARATOR_UNDERSCORE);
+		if (snakeCaseStr.endsWith(Cons.SEPARATOR_UNDERSCORE) && sb != null) {
+			sb.append(Cons.SEPARATOR_UNDERSCORE);
 		}
 		return sb != null? sb.toString() : null;
 	}
@@ -480,8 +494,8 @@ public class S extends StringUtils{
 	 * @return
 	 */
 	public static String extractToken(String authToken){
-		if(S.startsWithIgnoreCase(authToken, CommonConstant.TOKEN_PREFIX_BEARER)){
-			authToken = S.substring(authToken, CommonConstant.TOKEN_PREFIX_BEARER.length()).trim();
+		if(S.startsWithIgnoreCase(authToken, Cons.TOKEN_PREFIX_BEARER)){
+			authToken = S.substring(authToken, Cons.TOKEN_PREFIX_BEARER.length()).trim();
 		}
 		return authToken;
 	}

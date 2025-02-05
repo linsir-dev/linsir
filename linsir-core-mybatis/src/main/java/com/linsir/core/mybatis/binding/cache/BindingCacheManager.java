@@ -18,10 +18,10 @@ package com.linsir.core.mybatis.binding.cache;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.parser.EntityInfoCache;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.cache.StaticMemoryCacheManager;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.BeanUtils;
 import com.linsir.core.mybatis.util.ContextHolder;
 import com.linsir.core.mybatis.util.S;
@@ -193,7 +193,7 @@ public class BindingCacheManager {
      * @return
      */
     public static List<Field> getFields(Class<?> beanClazz, Class<? extends Annotation> annotation) {
-        String key = S.joinWith(CommonConstant.SEPARATOR_COMMA, beanClazz.getName(), annotation.getName());
+        String key = S.joinWith(Cons.SEPARATOR_COMMA, beanClazz.getName(), annotation.getName());
         return getCacheManager().getCacheObj(CACHE_NAME_CLASS_FIELDS, key, () -> BeanUtils.extractFields(beanClazz, annotation));
     }
 

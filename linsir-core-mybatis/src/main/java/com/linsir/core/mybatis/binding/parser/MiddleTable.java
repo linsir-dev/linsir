@@ -1,16 +1,28 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.parser;
-
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.Binder;
 import com.linsir.core.mybatis.binding.binder.BaseBinder;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.helper.ResultAssembler;
-
 import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.holder.ThreadLocalHolder;
 import com.linsir.core.mybatis.util.S;
@@ -24,10 +36,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * description：中间表
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:41
+ * 中间表
+ * @author mazc@dibo.ltd<br>
+ * @version 2.0<br>
+ * @date 2019/04/01 <br>
  */
 public class MiddleTable {
     private static final Logger log = LoggerFactory.getLogger(MiddleTable.class);
@@ -295,7 +307,7 @@ public class MiddleTable {
             if(additionalConditions != null){
                 for(String condition : additionalConditions){
                     WHERE(condition);
-                    if(S.containsIgnoreCase(condition, CommonConstant.COLUMN_IS_DELETED)){
+                    if(S.containsIgnoreCase(condition, Cons.COLUMN_IS_DELETED)){
                         appendDeleteFlag = false;
                     }
                 }
@@ -341,4 +353,3 @@ public class MiddleTable {
     }
 
 }
-

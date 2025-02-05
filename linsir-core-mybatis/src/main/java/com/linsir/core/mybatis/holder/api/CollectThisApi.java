@@ -22,6 +22,7 @@ import java.lang.annotation.*;
  * @author JerryMa
  * @version v2.2.1
  * @date 2021/4/23
+ * Copyright © diboot.com
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

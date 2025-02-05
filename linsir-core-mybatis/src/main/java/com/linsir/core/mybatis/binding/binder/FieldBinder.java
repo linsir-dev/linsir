@@ -1,15 +1,25 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.binder;
 
-
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.annotation.BindField;
 import com.linsir.core.mybatis.binding.binder.remote.RemoteBindingManager;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
-import com.linsir.core.mybatis.util.BeanUtils;
-import com.linsir.core.mybatis.util.S;
-import com.linsir.core.mybatis.util.V;
-import com.linsir.core.utils.IGetter;
-import com.linsir.core.utils.ISetter;
+import com.linsir.core.mybatis.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanWrapper;
@@ -18,10 +28,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * description：关联字段绑定
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:13
+ * 关联字段绑定
+ * @author mazc@dibo.ltd
+ * @version v2.0
+ * @date 2019/1/19
  */
 public class FieldBinder<T> extends BaseBinder<T> {
     private static final Logger log = LoggerFactory.getLogger(FieldBinder.class);
@@ -213,7 +223,7 @@ public class FieldBinder<T> extends BaseBinder<T> {
             // 将数子类型转换成字符串，以便解决类型不一致的问题
             String val = BeanUtils.getStringProperty(annoObject, toAnnoObjField(col));
             if(i > 0){
-                sb.append(CommonConstant.SEPARATOR_COMMA);
+                sb.append(Cons.SEPARATOR_COMMA);
             }
             sb.append(val);
         }
@@ -233,7 +243,7 @@ public class FieldBinder<T> extends BaseBinder<T> {
             String getterField = toAnnoObjField(entry.getKey());
             String fieldValue = BeanUtils.getStringProperty(annoObject, getterField);
             if(appendComma){
-                sb.append(CommonConstant.SEPARATOR_COMMA);
+                sb.append(Cons.SEPARATOR_COMMA);
             }
             sb.append(fieldValue);
             if(!appendComma){
@@ -285,4 +295,3 @@ public class FieldBinder<T> extends BaseBinder<T> {
     }
 
 }
-

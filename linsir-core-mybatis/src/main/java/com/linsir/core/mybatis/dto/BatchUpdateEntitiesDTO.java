@@ -1,6 +1,5 @@
 package com.linsir.core.mybatis.dto;
 
-
 import com.linsir.core.mybatis.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,10 +9,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * description：批量更新实体DTO
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/15 1:39
+ * 批量更新实体DTO
+ *
+ * @author Yangzhao
+ * @version 2.0.0
+ * @date 2020/12/8 10:07 上午
+ * Copyright © diboot.com
  */
 @Getter
 @Setter

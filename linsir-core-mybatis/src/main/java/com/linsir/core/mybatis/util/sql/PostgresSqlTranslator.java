@@ -15,7 +15,6 @@
  */
 package com.linsir.core.mybatis.util.sql;
 
-
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 

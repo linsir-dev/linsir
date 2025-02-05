@@ -1,46 +1,40 @@
 package com.linsir.core.mybatis.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.constant.CommonConstant;
-import com.linsir.core.mybatis.util.S;
-import com.linsir.core.mybatis.util.V;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 /**
- * @author linsir
- * @version 1.0.0
- * @title BaseTreeModel
- * @description
- * @create 2024/7/6 13:34
+ * 动态实体模型
+ * @author mazc@dibo.ltd
+ * @version v3.0
+ * @date 2023/5/25
  */
-
-
-public class BaseTreeModel<U> extends AbstractEntity<Long> {
-
-    private U parentId;
-
-    public BaseTreeModel<U> setParentId(U parentId) {
-        this.parentId = parentId;
-        return this;
-    }
-
-    public U getParentId() {
-        return this.parentId;
-    }
-
+@Getter
+@Setter
+@Accessors(chain = true)
+public class BaseTreeModel extends BaseTreeEntity<String> {
+    private static final long serialVersionUID = 10206L;
 
     /**
-     * 父级ID的全路径
-     * <p>
-     * 格式：/([0-9a-f]+,)+/g
+     * 更新时间
      */
-    @JsonIgnore
-    private String parentIdsPath;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
-    public BaseTreeModel<U> setParentIdsPath(String parentIdsPath) {
-        if (V.notEmpty(parentIdsPath) && !S.endsWith(parentIdsPath, CommonConstant.SEPARATOR_COMMA)) {
-            parentIdsPath += CommonConstant.SEPARATOR_COMMA;
-        }
-        this.parentIdsPath = parentIdsPath;
-        return this;
-    }
+    /**
+     * 创建人
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private String createBy;
+
+    /**
+     * 更新人
+     */
+    @TableField(fill = FieldFill.UPDATE)
+    private String updateBy;
 }

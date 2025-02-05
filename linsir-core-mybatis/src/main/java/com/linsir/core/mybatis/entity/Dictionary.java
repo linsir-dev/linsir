@@ -1,29 +1,64 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import com.linsir.core.mybatis.binding.annotation.BindI18n;
 import com.linsir.core.mybatis.binding.query.BindQuery;
 import com.linsir.core.mybatis.binding.query.Comparison;
+import com.linsir.core.mybatis.vo.LabelValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
- * @author ：linsir
- * @date ：Created in 2022/3/23 15:17
- * @description：数据字典实体
- * @modified By：
- * @version: 0.0.1
+ * 数据字典实体
+ * @author mazc@dibo.ltd
+ * @version v2.0
+ * @date 2018/12/27
  */
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class Dictionary extends AbstractEntity<Long> {
-    private static final long serialVersionUID = -7514603697434856747L;
+@TableName(value = "dbt_dictionary", autoResultMap = true)
+public class Dictionary extends BaseEntity<String> {
+    private static final long serialVersionUID = 11301L;
 
-    @NotNull(message = "上级ID不能为空，如无请设为0")
+    /**
+     * 租户ID
+     */
+    @JsonIgnore
     @TableField
-    private Long parentId = 0L;
+    private String tenantId;
+
+    /**
+     * 上级ID
+     */
+    @TableField
+    private String parentId;
 
     /**
      * 应用模块
@@ -31,52 +66,106 @@ public class Dictionary extends AbstractEntity<Long> {
     @TableField
     private String appModule;
 
-    /***
+    /**
      * 数据字典类型
      */
-    @NotNull(message = "数据字典类型不能为空！")
-    @Length(max = 50, message = "数据字典类型长度超长！")
+    @NotNull(message = "{validation.dictionary.type.NotNull.message}")
+    @Length(max = 50, message = "{validation.dictionary.type.Length.message}")
     @TableField
     private String type;
 
-    /***
+    /**
      * 数据字典项的显示名称
      */
-    @NotNull(message = "数据字典项名称不能为空！")
-    @Length(max = 100, message = "数据字典项名称长度超长！")
+    @NotNull(message = "{validation.dictionary.itemName.NotNull.message}")
+    @Length(max = 100, message = "{validation.dictionary.itemName.Length.message}")
     @BindQuery(comparison = Comparison.LIKE)
-    @TableField
+    @BindI18n("itemNameI18n")
     private String itemName;
 
-    /***
+    /**
+     * 数据字典项的显示名称国际化资源标识
+     */
+    private String itemNameI18n;
+
+    /**
      * 数据字典项的存储值（编码）
      */
-    @Length(max = 100, message = "数据字典项编码长度超长！")
+    @Length(max = 100, message = "{validation.dictionary.itemValue.Length.message}")
     @TableField
     private String itemValue;
 
-    /***
+    /**
      * 备注信息
      */
-    @Length(max = 200, message = "数据字典备注长度超长！")
+    @Length(max = 200, message = "{validation.dictionary.description.Length.message}")
     @TableField
     private String description;
 
-    /***
+    /**
      * 排序号
      */
     @TableField
     private Integer sortId;
 
-    /***
+    /**
      * 是否为系统预置（预置不可删除）
      */
     @TableField("is_deletable")
     private Boolean isDeletable;
 
-    /***
+    /**
      * 是否可编辑
      */
     @TableField("is_editable")
     private Boolean isEditable;
+
+    /**
+     * 扩展字段
+     */
+    @TableField(typeHandler = JacksonTypeHandler.class)
+    private Map<String, Object> extension;
+
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
+
+    /**
+     * 从extdata JSON中提取扩展属性值
+     * @param extAttrName
+     * @return
+     */
+    public Object getFromExt(String extAttrName){
+        if(this.extension == null){
+            return null;
+        }
+        return this.extension.get(extAttrName);
+    }
+
+    /**
+     * 添加扩展属性和值到extdata JSON中
+     * @param extAttrName
+     * @param extAttrValue
+     */
+    public Dictionary addIntoExt(String extAttrName, Object extAttrValue){
+        if(extAttrName == null && extAttrValue == null){
+            return this;
+        }
+        if(this.extension == null){
+            this.extension = new LinkedHashMap<>();
+        }
+        this.extension.put(extAttrName, extAttrValue);
+        return this;
+    }
+
+    /**
+     * 转换为选项
+     * @return
+     */
+    public LabelValue toLabelValue() {
+        return new LabelValue(this.getItemName(), this.getItemValue()).setExt(this.getExtension());
+    }
+
 }

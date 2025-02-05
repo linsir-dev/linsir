@@ -1,12 +1,26 @@
+/*
+ * Copyright (c) 2015-2029, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.binder;
 
-
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.Binder;
 import com.linsir.core.mybatis.binding.annotation.BindCount;
 import com.linsir.core.mybatis.binding.binder.remote.RemoteBindingManager;
 import com.linsir.core.mybatis.binding.helper.ResultAssembler;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.service.BaseService;
 import com.linsir.core.mybatis.util.MapUtils;
@@ -17,10 +31,10 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /**
- * description：关联子项count计数绑定
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:09
+ * 关联子项count计数绑定
+ * @author mazc@dibo.ltd
+ * @version v2.6.0
+ * @date 2022/06/23
  */
 public class CountBinder<T> extends EntityListBinder<T> {
     private static final Logger log = LoggerFactory.getLogger(CountBinder.class);
@@ -131,7 +145,7 @@ public class CountBinder<T> extends EntityListBinder<T> {
             for(int i=0; i<refObjJoinCols.size(); i++) {
                 Object pkValue = MapUtils.getIgnoreCase(countMap, refObjJoinCols.get(i));
                 if(i > 0){
-                    sb.append(CommonConstant.SEPARATOR_COMMA);
+                    sb.append(Cons.SEPARATOR_COMMA);
                 }
                 sb.append(pkValue);
             }

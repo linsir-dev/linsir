@@ -1,31 +1,42 @@
 package com.linsir.core.mybatis.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.linsir.core.constant.CommonConstant;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 /**
- * @author linsir
- * @version 1.0.0
- * @title BaseModel
- * @description
- * @create 2024/7/6 13:09
- *
- * 有逻辑删除字段，没有租户概念
- *
+ * 动态实体模型
+ * @author mazc@dibo.ltd
+ * @version v3.0
+ * @date 2023/5/25
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+public class BaseModel extends BaseEntity<String> {
+    private static final long serialVersionUID = 10204L;
 
-@Data
-public class BaseModel extends AbstractEntity<Long> {
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * 创建人
+     */
+    @TableField(fill = FieldFill.INSERT, insertStrategy = FieldStrategy.NOT_EMPTY)
+    private String createBy;
 
-
-    @TableLogic
-    @JsonIgnore
-    @TableField(value = CommonConstant.COLUMN_IS_DELETED, select = false)
-    private boolean deleted = false;
+    /**
+     * 更新人
+     */
+    @TableField(fill = FieldFill.UPDATE)
+    private String updateBy;
 
 }

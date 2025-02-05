@@ -1,6 +1,5 @@
 package com.linsir.core.mybatis.binding.parser;
 
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -15,10 +14,11 @@ import org.springframework.core.annotation.AnnotationUtils;
 import java.io.Serializable;
 
 /**
- * description：Entity相关信息缓存
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:27
+ * Entity相关信息缓存
+ * @author JerryMa
+ * @version v2.2.1
+ * @date 2021/4/17
+ * Copyright © diboot.com
  */
 @Getter
 @Setter
@@ -138,4 +138,3 @@ public class EntityInfoCache implements Serializable {
     }
 
 }
-

@@ -1,15 +1,28 @@
+/*
+ * Copyright (c) 2015-2021, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.helper;
-
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.Query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.extension.conditions.query.ChainQuery;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.query.Comparison;
-
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.data.copy.Accept;
 import com.linsir.core.mybatis.util.JSON;
 import com.linsir.core.mybatis.util.S;
@@ -25,10 +38,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * description：Wrapper帮助类
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:20
+ * Wrapper帮助类
+ *
+ * @author wind
+ * @version v2.5.0
+ * @date 2022/01/05
  */
 @Slf4j
 public class WrapperHelper {
@@ -156,8 +170,8 @@ public class WrapperHelper {
                     }
                 }
                 // 支持逗号分隔的字符串
-                else if (value instanceof String && ((String) value).contains(CommonConstant.SEPARATOR_COMMA)) {
-                    Object[] valueArray = ((String) value).split(CommonConstant.SEPARATOR_COMMA);
+                else if (value instanceof String && ((String) value).contains(Cons.SEPARATOR_COMMA)) {
+                    Object[] valueArray = ((String) value).split(Cons.SEPARATOR_COMMA);
                     wrapper.between(columnName, valueArray[0], valueArray[1]);
                 } else {
                     wrapper.ge(columnName, value);
@@ -189,11 +203,11 @@ public class WrapperHelper {
     public static void buildOrderBy(QueryWrapper<?> query, String orderBy, Function<String, String> field2column) {
         // 解析排序
         if (V.notEmpty(orderBy)) {
-            for (String field : S.split(orderBy, CommonConstant.SEPARATOR_COMMA)) {
+            for (String field : S.split(orderBy, Cons.SEPARATOR_COMMA)) {
                 V.securityCheck(field);
-                String[] fieldAndOrder = field.split(CommonConstant.SEPARATOR_COLON);
+                String[] fieldAndOrder = field.split(Cons.SEPARATOR_COLON);
                 String columnName = field2column.apply(fieldAndOrder[0]);
-                if (fieldAndOrder.length > 1 && CommonConstant.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
+                if (fieldAndOrder.length > 1 && Cons.ORDER_DESC.equalsIgnoreCase(fieldAndOrder[1])) {
                     query.orderByDesc(columnName);
                 } else {
                     query.orderByAsc(columnName);
@@ -237,4 +251,3 @@ public class WrapperHelper {
     }
 
 }
-

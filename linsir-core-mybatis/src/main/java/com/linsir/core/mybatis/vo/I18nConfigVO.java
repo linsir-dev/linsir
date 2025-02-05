@@ -15,7 +15,6 @@
  */
 package com.linsir.core.mybatis.vo;
 
-
 import com.linsir.core.mybatis.binding.annotation.BindDict;
 import com.linsir.core.mybatis.entity.I18nConfig;
 import lombok.Getter;

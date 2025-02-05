@@ -1,10 +1,23 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.parser;
-
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.query.BindQuery;
@@ -31,10 +44,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 
 /**
- * description：对象中的绑定注解 缓存管理类
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:42
+ *  对象中的绑定注解 缓存管理类
+ * @author mazc@dibo.ltd<br>
+ * @version 2.0<br>
+ * @date 2019/04/03 <br>
  */
 @SuppressWarnings({"rawtypes", "JavaDoc"})
 @Slf4j
@@ -162,7 +175,7 @@ public class ParserCache {
     public static BaseMapper getMapperInstance(Class<?> entityClass){
         BaseMapper mapper = BindingCacheManager.getMapperByClass(entityClass);
         if(mapper == null){
-            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"未找到 {} 的Mapper定义！", entityClass.getName());
+            throw new InvalidUsageException("未找到 {} 的Mapper定义！", entityClass.getName());
         }
         return mapper;
     }
@@ -311,4 +324,3 @@ public class ParserCache {
     }
 
 }
-

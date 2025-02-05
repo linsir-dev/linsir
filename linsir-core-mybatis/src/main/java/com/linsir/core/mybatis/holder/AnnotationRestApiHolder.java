@@ -15,9 +15,8 @@
  */
 package com.linsir.core.mybatis.holder;
 
-
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.cache.StaticMemoryCacheManager;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.holder.api.CollectThisApi;
 import com.linsir.core.mybatis.holder.api.RestApi;
 import com.linsir.core.mybatis.holder.api.RestApiWrapper;
@@ -198,10 +197,10 @@ public class AnnotationRestApiHolder {
      */
     private static void buildRestApi(RestApiWrapper wrapper, String urlPrefix, ApiUri apiUri, CollectThisApi annotation){
         String requestMethod = apiUri.getMethod(), url = apiUri.getUri();
-        for(String m : requestMethod.split(CommonConstant.SEPARATOR_COMMA)){
-            for(String u : url.split(CommonConstant.SEPARATOR_COMMA)){
+        for(String m : requestMethod.split(Cons.SEPARATOR_COMMA)){
+            for(String u : url.split(Cons.SEPARATOR_COMMA)){
                 if(V.notEmpty(urlPrefix)){
-                    for(String path : urlPrefix.split(CommonConstant.SEPARATOR_COMMA)){
+                    for(String path : urlPrefix.split(Cons.SEPARATOR_COMMA)){
                         RestApi restApi = new RestApi().setApiMethod(m).setApiUri(path + u)
                                 .setCategory(annotation.category()).setApiName(annotation.name());
                         wrapper.addChild(restApi);

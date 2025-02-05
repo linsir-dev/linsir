@@ -15,7 +15,6 @@
  */
 package com.linsir.core.mybatis.converter;
 
-
 import com.linsir.core.mybatis.util.D;
 import com.linsir.core.mybatis.util.V;
 import org.springframework.core.convert.converter.Converter;

@@ -16,7 +16,7 @@
 package com.linsir.core.mybatis.vo;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.linsir.core.constant.CommonConstant;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 
@@ -69,7 +69,7 @@ public class PagingJsonResult<T> extends JsonResult<T> {
                     orderByList.add(o.getColumn());
                 }
                 else{
-                    orderByList.add(o.getColumn() + ":" + CommonConstant.ORDER_DESC);
+                    orderByList.add(o.getColumn() + ":" + Cons.ORDER_DESC);
                 }
             });
             pagination.setOrderBy(S.join(orderByList));

@@ -1,17 +1,31 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.query.dynamic;
-
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.QueryBuilder;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
 import com.linsir.core.mybatis.binding.parser.PropInfo;
 import com.linsir.core.mybatis.binding.query.BindQuery;
 import com.linsir.core.mybatis.config.BaseConfig;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.BeanUtils;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
@@ -25,10 +39,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * description：动态SQL构建Provider
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/15 0:19
+ * 动态SQL构建Provider
+ * @author Mazc@dibo.ltd
+ * @version v2.0
+ * @date 2020/04/15
  */
 @Slf4j
 public class DynamicSqlProvider {
@@ -112,7 +126,7 @@ public class DynamicSqlProvider {
                     String isDeletedCol = ParserCache.getDeletedColumn(wrapper.getEntityTable());
                     String isDeletedSection = "self."+ isDeletedCol;
                     if(isDeletedCol != null && !QueryBuilder.checkHasColumn(segments.getNormal(), isDeletedSection)){
-                        WHERE(isDeletedSection+ " = " + BaseConfig.getActiveFlagValue());
+                        WHERE(isDeletedSection+ " = " +BaseConfig.getActiveFlagValue());
                     }
                 }
                 // 存在联表且无where条件，
@@ -164,7 +178,7 @@ public class DynamicSqlProvider {
         if(page != null && page.orders() != null) {
             for(OrderItem orderItem : page.orders()){
                 if(!columnList.contains(orderItem.getColumn())) {
-                    sb.append(CommonConstant.SEPARATOR_COMMA).append(orderItem.getColumn()).append(" AS ").append(S.replace(orderItem.getColumn(), ".", "_")).append(PLACEHOLDER_COLUMN_FLAG);
+                    sb.append(Cons.SEPARATOR_COMMA).append(orderItem.getColumn()).append(" AS ").append(S.replace(orderItem.getColumn(), ".", "_")).append(PLACEHOLDER_COLUMN_FLAG);
                 }
             }
         }
@@ -184,4 +198,3 @@ public class DynamicSqlProvider {
     }
 
 }
-

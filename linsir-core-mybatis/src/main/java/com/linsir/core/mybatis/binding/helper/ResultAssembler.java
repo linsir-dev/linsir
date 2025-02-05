@@ -1,7 +1,22 @@
+/*
+ * Copyright (c) 2015-2020, www.dibo.ltd (service@dibo.ltd).
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.linsir.core.mybatis.binding.helper;
 
-import com.linsir.core.constant.CommonConstant;
 import com.linsir.core.mybatis.binding.Binder;
+import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.util.BeanUtils;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
@@ -11,10 +26,10 @@ import org.springframework.beans.BeanWrapper;
 import java.util.*;
 
 /**
- * description：绑定关联数据组装器
- * author     ：linsir
- * version    ： v1.2.0
- * date       ：2025/1/14 23:19
+ * 绑定关联数据组装器
+ * @author mazc@dibo.ltd
+ * @version v2.1.2
+ * @date 2020/08/19
  */
 @Slf4j
 public class ResultAssembler {
@@ -178,7 +193,7 @@ public class ResultAssembler {
                     }
                     String fieldValue = BeanUtils.getStringProperty(object, getterField);
                     if(appendComma){
-                        sb.append(CommonConstant.SEPARATOR_COMMA);
+                        sb.append(Cons.SEPARATOR_COMMA);
                     }
                     sb.append(fieldValue);
                     if(!appendComma){
@@ -294,7 +309,7 @@ public class ResultAssembler {
             for(Map.Entry<String, String> entry : trunkObjColMapping.entrySet()){
                 Object keyObj = getValueIgnoreKeyCase(row, entry.getValue());
                 if(appendComma){
-                    sb.append(CommonConstant.SEPARATOR_COMMA);
+                    sb.append(Cons.SEPARATOR_COMMA);
                 }
                 sb.append(S.valueOf(keyObj));
                 if(!appendComma){
@@ -329,7 +344,7 @@ public class ResultAssembler {
             for(Map.Entry<String, String> entry : trunkObjColMapping.entrySet()){
                 Object keyObj = getValueIgnoreKeyCase(row, entry.getValue());
                 if(appendComma){
-                    sb.append(CommonConstant.SEPARATOR_COMMA);
+                    sb.append(Cons.SEPARATOR_COMMA);
                 }
                 sb.append(S.valueOf(keyObj));
                 if(!appendComma){
@@ -371,7 +386,7 @@ public class ResultAssembler {
             for(Map.Entry<String, String> entry : trunkObjColMapping.entrySet()){
                 Object keyObj = getValueIgnoreKeyCase(row, entry.getValue());
                 if(appendComma){
-                    sb.append(CommonConstant.SEPARATOR_COMMA);
+                    sb.append(Cons.SEPARATOR_COMMA);
                 }
                 sb.append(S.valueOf(keyObj));
                 if(!appendComma){
@@ -459,4 +474,3 @@ public class ResultAssembler {
     }
 
 }
-

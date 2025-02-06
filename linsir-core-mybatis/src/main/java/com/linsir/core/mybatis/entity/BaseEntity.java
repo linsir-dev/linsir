@@ -19,14 +19,17 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.linsir.core.mybatis.config.Cons;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Entity基础父类
@@ -51,24 +54,28 @@ public abstract class BaseEntity<T extends Serializable> extends AbstractEntity<
     /**
      * 默认记录创建时间字段，新建时由数据库赋值
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape =JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createdTime;
 
     /**
      * 更新时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape =JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Date updatedTime;
 
     /**
      * 创建人
      */
     @TableField(fill = FieldFill.INSERT, insertStrategy = FieldStrategy.NOT_EMPTY)
-    private String createBy;
+    private String createdBy;
 
     /**
      * 更新人
      */
-    @TableField(fill = FieldFill.UPDATE)
-    private String updateBy;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updatedBy;
 }

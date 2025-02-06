@@ -20,6 +20,59 @@ public interface FieldConstant {
     /*排序 - 降序标记*/
     public static final String ORDER_DESC = "DESC";
 
+    /*-------------------Field--------------------*/
+    public enum FieldName{
+        /**
+         * 主键属性名
+         */
+        id,
+        /**
+         * 租户Id
+         */
+        tenantId,
+        /**
+         * 默认的上级ID属性名
+         */
+        parentId,
+        /**
+         * 子节点属性名
+         */
+        children,
+        /**
+         * 逻辑删除标记字段
+         */
+        deleted,
+        /**
+         * 创建时间字段
+         */
+        createdTime,
+        /**
+         * 更新时间
+         */
+        updatedTime,
+        /**
+         * 创建人
+         */
+        createdBy,
+        /**
+         * 更新人
+         */
+        updatedBy,
+        /**
+         * 组织id
+         */
+        orgId,
+        /**
+         * 用户id
+         */
+        userId,
+        /**
+         * 父ids路径
+         */
+        parentIdsPath
+    }
+
+
     /*------------------字段&列名---------------------*/
 
     /*逻辑删除列名*/
@@ -29,22 +82,15 @@ public interface FieldConstant {
     public static final String FIELD_DELETED = "deleted";
 
     public static final String COLUMN_CREATED_TIME = "created_time";
-    public static final String CREATE_TIME = "createdTime";
     public static final String COLUMN_UPDATE_TIME = "updated_time";
-    public static final String UPDATE_TIME = "updatedTime";
-    public static final String CREATE_BY = "createdBy";
     public static final String COLUMN_CREATE_BY = "created_by";
     public static final String COLUMN_UPDATE_BY = "updated_by";
-    public static final String UPDATE_BY = "updatedBy";
-
-    public static final String PARENT_ID="parent_id";
+    public static final String COLUMN_PARENT_ID="parent_id";
 
     /**
      * 租户数据库的字段名称
      * */
     public static final String COLUMN_TENANT_CODE = "tenant_code";
-    public static final String TENANT_CODE = "tenantCode";
-
     public static final String COLUMN_ID = "id";
 
 

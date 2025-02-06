@@ -44,7 +44,7 @@ public interface TokenConstant {
 	String CLIENT_ID = "client_id";
 	String USER_TYPE = "type";
 	String LICENSE = "license";
-	String LICENSE_NAME = "powered by bladex";
+	String LICENSE_NAME = "powered by linsir";
 	String DEFAULT_AVATAR = "";
 	Integer AUTH_LENGTH = 7;
 

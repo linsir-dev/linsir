@@ -27,5 +27,5 @@ public class BaseModel extends BaseEntity<Long> {
      */
     @JsonIgnore
     @TableField
-    private String tenantCode;
+    private String tenantId;
 }

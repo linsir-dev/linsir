@@ -30,6 +30,9 @@ public class LinsirTenantLineHandler implements TenantLineHandler {
 
     @Override
     public Expression getTenantId() {
+        /*
+        * 租户编码这里对没有忽略的表，在查询的时候，会查询租户tenant_id，在插入的时候，会自动插入租户tenant_id
+        * */
         log.info("获取租户ID，这里临时使用默认的用户{}", RoleConstant.ADMIN_TENANT_ID);
         return new StringValue(Func.toStr(null,RoleConstant.ADMIN_TENANT_ID));
     }

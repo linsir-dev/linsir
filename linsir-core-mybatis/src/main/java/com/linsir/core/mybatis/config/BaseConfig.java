@@ -85,7 +85,7 @@ public class BaseConfig {
 	 */
 	public static int getCutLength(){
 		if(cutLength == null){
-			cutLength = PropertiesUtils.getInteger("diboot.core.cut-length");
+			cutLength = PropertiesUtils.getInteger("linsir.core.cut-length");
 			if(cutLength == null){
 				cutLength = 20;
 			}
@@ -100,7 +100,7 @@ public class BaseConfig {
 	 */
     public static int getPageSize() {
 		if(pageSize == null){
-			pageSize = PropertiesUtils.getInteger("diboot.core.page-size");
+			pageSize = PropertiesUtils.getInteger("linsir.core.page-size");
 			if(pageSize == null){
 				pageSize = 20;
 			}
@@ -115,7 +115,7 @@ public class BaseConfig {
 	 */
 	public static int getBatchSize() {
 		if(batchSize == null){
-			batchSize = PropertiesUtils.getInteger("diboot.core.batch-size");
+			batchSize = PropertiesUtils.getInteger("linsir.core.batch-size");
 			if(batchSize == null){
 				batchSize = 1000;
 			}
@@ -165,7 +165,7 @@ public class BaseConfig {
 	 */
 	public static long getWorkerId(){
 		if(workerId == null){
-			workerId = PropertiesUtils.getLong("diboot.id.worker-id");
+			workerId = PropertiesUtils.getLong("linsir.id.worker-id");
 			if(workerId == null){
 				workerId = 1L;
 			}
@@ -179,7 +179,7 @@ public class BaseConfig {
 	 */
 	public static long getDataCenterId() {
 		if(dataCenterId == null){
-			dataCenterId = PropertiesUtils.getLong("diboot.id.data-center-id");
+			dataCenterId = PropertiesUtils.getLong("linsir.id.data-center-id");
 			if(dataCenterId == null){
 				dataCenterId = 1L;
 			}
@@ -194,7 +194,7 @@ public class BaseConfig {
 	private static Boolean enableI18n = null;
 	public static boolean isEnabledI18n() {
 		if(enableI18n == null){
-			enableI18n = PropertiesUtils.getBoolean("diboot.i18n");
+			enableI18n = PropertiesUtils.getBoolean("linsir.i18n");
 		}
 		return enableI18n;
 	}

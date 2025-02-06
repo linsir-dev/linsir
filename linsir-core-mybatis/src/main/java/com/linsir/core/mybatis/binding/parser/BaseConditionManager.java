@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.binding.parser;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
@@ -93,7 +94,7 @@ public class BaseConditionManager {
             return null;
         }
         if(tableNameSet.size() > 1){
-            throw new InvalidUsageException("中间表关联条件暂只支持1张中间表！当前包含多个: {}", tableNameSet);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"中间表关联条件暂只支持1张中间表！当前包含多个: {}", tableNameSet);
         }
         return tableNameSet.iterator().next();
     }

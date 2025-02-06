@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.binding.query.dynamic;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.parser.BaseConditionManager;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.S;
@@ -46,7 +47,7 @@ public class JoinConditionManager extends BaseConditionManager {
         List<Expression> expressionList = getExpressionList(joiner.getCondition());
         if(V.isEmpty(expressionList)){
             log.warn("无法解析注解条件: {} ", joiner.getCondition());
-            throw new InvalidUsageException("无法解析注解条件: {}", joiner.getCondition());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法解析注解条件: {}", joiner.getCondition());
         }
         // 解析中间表关联
         String tableName = extractMiddleTableName(expressionList, joiner.getJoin());

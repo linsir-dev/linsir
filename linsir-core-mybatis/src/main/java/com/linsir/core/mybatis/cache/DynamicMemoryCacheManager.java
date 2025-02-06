@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.cache;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.V;
 import lombok.extern.slf4j.Slf4j;
@@ -139,7 +140,7 @@ public class DynamicMemoryCacheManager extends BaseMemoryCacheManager implements
     public synchronized void clearOutOfDateData(String cacheName) {
         Cache cache = getCache(cacheName);
         if(cache == null) {
-            throw new InvalidUsageException("无法获取cache：{}，请检查是否初始化", cacheName);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法获取cache：{}，请检查是否初始化", cacheName);
         }
         ConcurrentMap<Object, Object> cacheMap = (ConcurrentMap<Object, Object>)cache.getNativeCache();
         if(V.isEmpty(cacheMap)){

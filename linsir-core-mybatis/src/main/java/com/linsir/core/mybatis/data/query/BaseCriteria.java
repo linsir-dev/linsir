@@ -29,7 +29,7 @@ import java.util.Collection;
  * @author JerryMa
  * @version v3.2.0
  * @date 2024/1/15
- * Copyright © diboot.com
+ * Copyright © linsir.com
  */
 @Getter @Setter @Accessors(chain = true)
 public class BaseCriteria implements Serializable {

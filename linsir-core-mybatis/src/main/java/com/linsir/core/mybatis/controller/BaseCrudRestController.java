@@ -17,6 +17,7 @@ package com.linsir.core.mybatis.controller;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.entity.AbstractEntity;
@@ -27,7 +28,6 @@ import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 import com.linsir.core.mybatis.vo.JsonResult;
 import com.linsir.core.mybatis.vo.Pagination;
-import com.linsir.core.mybatis.vo.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -253,7 +253,7 @@ public class BaseCrudRestController<E extends AbstractEntity> extends BaseContro
     }
 
     protected JsonResult<?> failOperation() {
-        return new JsonResult<>(Status.FAIL_OPERATION);
+        return new JsonResult<>(ResultCode.FAIL_OPERATION);
     }
 
     protected JsonResult<?> failOperation(String msg) {
@@ -261,14 +261,14 @@ public class BaseCrudRestController<E extends AbstractEntity> extends BaseContro
     }
 
     protected JsonResult<?> failInvalidParam() {
-        return new JsonResult<>(Status.FAIL_INVALID_PARAM);
+        return new JsonResult<>(ResultCode.FAIL_INVALID_PARAM);
     }
 
     protected JsonResult<?> failInvalidParam(String msg) {
         return JsonResult.FAIL_INVALID_PARAM(msg);
     }
 
-    protected JsonResult<?> fail(Status status, String msg) {
+    protected JsonResult<?> fail(ResultCode status, String msg) {
         return new JsonResult<>(status).msg(msg);
     }
 

@@ -18,6 +18,7 @@ package com.linsir.core.mybatis.binding.binder;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.annotation.Module;
 import com.linsir.core.mybatis.binding.binder.remote.RemoteBindDTO;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
@@ -197,7 +198,7 @@ public abstract class BaseBinder<T> {
                 fieldName = annoObjectFieldKey;
             }
             if(fieldName == null) {
-                throw new InvalidUsageException("字段/列 {} 不存在", annoObjectFieldKey);
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"字段/列 {} 不存在", annoObjectFieldKey);
             }
             annoObjJoinFieldComparisons.add(new FieldComparison(fieldName, comparison, eqFilterConsVal));
         }
@@ -527,7 +528,7 @@ public abstract class BaseBinder<T> {
         if(iService == null){
             // 本地绑定需确保有Service实现类
             if(moduleAnno == null){
-                throw new InvalidUsageException("{} 无 BaseService/IService实现类，无法执行注解绑定！", entityClass.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"{} 无 BaseService/IService实现类，无法执行注解绑定！", entityClass.getSimpleName());
             }
         }
         return iService;

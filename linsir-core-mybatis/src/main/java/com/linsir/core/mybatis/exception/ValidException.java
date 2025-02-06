@@ -1,7 +1,4 @@
-
 package com.linsir.core.mybatis.exception;
-
-
 
 import com.linsir.core.code.ICode;
 import com.linsir.core.code.ResultCode;
@@ -10,26 +7,23 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serial;
 
-
 /**
- * 无效使用异常类 InvalidUsageException
- *
- *  无效操作类
- * @author : linsir
- * @version : v1.2.0
- * @date 2025/01/25
+ * @author linsir
+ * @title: ValidExeption
+ * @projectName linsir
+ * @description: 验证异常
+ * @date 2022/3/4 13:28
  */
 @Slf4j
-public class InvalidUsageException extends BaseException {
+public class ValidException extends BaseException {
 
     @Serial
     private static final long serialVersionUID = -1203618387183809985L;
 
     /**
-     * 默认异常
+     * 默认
      */
-    public InvalidUsageException()
-    {
+    public ValidException() {
         super();
     }
 
@@ -37,7 +31,7 @@ public class InvalidUsageException extends BaseException {
      * 附加消息
      * @param msg
      */
-    public InvalidUsageException(String msg)
+    public ValidException(String msg)
     {
         super(msg);
     }
@@ -46,7 +40,7 @@ public class InvalidUsageException extends BaseException {
      * 默认code 异常
      * @param code
      */
-    public InvalidUsageException(ICode code)
+    public ValidException(ICode code)
     {
         super(code);
     }
@@ -56,7 +50,7 @@ public class InvalidUsageException extends BaseException {
      * @param msg
      * @param code
      */
-    public InvalidUsageException(String msg, ICode code)
+    public ValidException(String msg, ICode code)
     {
         super(msg, code);
     }
@@ -67,9 +61,9 @@ public class InvalidUsageException extends BaseException {
      * @param code
      * @param args
      */
-    public InvalidUsageException( ICode code, String msg,Object... args)
+    public ValidException(String msg, ICode code, Object... args)
     {
-        super(code, msg, args);
+        super( code,msg, args);
     }
 
 
@@ -80,19 +74,18 @@ public class InvalidUsageException extends BaseException {
      * @param code
      * @param args
      */
-    public InvalidUsageException(Throwable ex, String msg, ICode code, Object... args)
+    public ValidException(Throwable ex, String msg, ICode code, Object... args)
     {
         super(ex, msg, code, args);
     }
-
 
     /**
      * 默认的无效的异常
      * @return
      */
-    public static InvalidUsageException getInvalidUsageException()
+    public static InvalidUsageException getValidException()
     {
-        return new InvalidUsageException(ResultCode.INVALID_OPERATION);
+        return new InvalidUsageException(ResultCode.FAIL_VALIDATION);
     }
 
     /**
@@ -100,9 +93,8 @@ public class InvalidUsageException extends BaseException {
      * @param msg
      * @return
      */
-    public static InvalidUsageException getInvalidUsageException(String msg)
+    public static InvalidUsageException getValidException(String msg)
     {
-        return new InvalidUsageException(msg, ResultCode.INVALID_OPERATION);
+        return new InvalidUsageException(msg, ResultCode.FAIL_VALIDATION);
     }
-
 }

@@ -31,6 +31,7 @@ import com.linsir.core.mybatis.service.BaseService;
 import com.linsir.core.mybatis.util.*;
 import com.linsir.core.mybatis.vo.LabelValue;
 import com.linsir.core.mybatis.vo.Pagination;
+import com.linsir.core.results.R;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,11 +50,69 @@ import java.util.stream.Stream;
  * @version 2.0
  * @date 2019/01/01
  */
+
 public class BaseController {
 	private static final Logger log = LoggerFactory.getLogger(BaseController.class);
 
 	@Autowired
 	protected HttpServletRequest request;
+
+	/**
+	 * 统一操作
+	 * @param logType
+	 * @param callable
+	 * @return
+	 */
+	protected R exec(int logType,ControllerCallable callable){
+		String url = request.getRequestURI();
+
+		switch (logType) {
+			case 1:{
+				log.info("请求url:{},正在进行登陆",url);
+			};
+			case 2:{
+				log.info("请求url:{},正在进行操作",url);
+			};
+			case 3:{
+				log.info("请求url:{},正在进行查询",url);
+			};
+			case 4:{
+				log.info("请求url:{},正在进行添加",url);
+			};
+			case 5:{
+				log.info("请求url:{},正在进行更新",url);
+			};
+			case 6:{
+				log.info("请求url:{},正在进行删除",url);
+			};
+			case 7:{
+				log.info("请求url:{},正在进行导入",url);
+			};
+			case 8:{
+				log.info("请求url:{},正在进行导出",url);
+			};
+			default:{
+				log.info("请求url:{},正在进行",url);
+			}
+		}
+		R result = null;
+		try {
+			result = callable.execute();
+		}catch (Exception e){
+			throw new BusinessException(e.getMessage());
+		}
+		return result;
+	}
+
+	protected R exec(ControllerCallable callable){
+		R result = null;
+		try {
+			result = exec(2,callable);
+		}catch (Exception e){
+			throw new BusinessException(e.getMessage());
+		}
+		return result;
+	}
 
 	/**
 	 * 根据DTO构建查询QueryWrapper (根据BindQuery注解构建相应的查询条件，DTO中的非空属性均参与构建)

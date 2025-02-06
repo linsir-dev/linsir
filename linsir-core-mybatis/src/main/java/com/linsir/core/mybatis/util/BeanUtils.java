@@ -20,13 +20,13 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.core.toolkit.support.LambdaMeta;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.converter.EnhancedConversionService;
 import com.linsir.core.mybatis.data.copy.AcceptAnnoCopier;
 import com.linsir.core.mybatis.entity.BaseEntity;
 import com.linsir.core.mybatis.exception.BusinessException;
 import com.linsir.core.mybatis.vo.LabelValue;
-import com.linsir.core.mybatis.vo.Status;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.slf4j.Logger;
@@ -527,7 +527,7 @@ public class BeanUtils {
             Object parentId = getProperty(node, parentIdFieldName);
             Object nodeId = getProperty(node, idFieldName);
             if (V.equals(nodeId, parentId)) {
-                throw new BusinessException(Status.WARN_PERFORMANCE_ISSUE, "parentId关联自身，请检查！" + node.getClass().getSimpleName() + ":" + nodeId);
+                throw new BusinessException(ResultCode.WARN_PERFORMANCE_ISSUE, "parentId关联自身，请检查！" + node.getClass().getSimpleName() + ":" + nodeId);
             }
             parentId2ListMap.computeIfAbsent(parentId, k -> new ArrayList<>()).add(node);
         }
@@ -605,7 +605,7 @@ public class BeanUtils {
             Object nodeId = getId.apply(node);
             Object parentId = getParentId.apply(node);
             if (V.equals(nodeId, parentId)) {
-                throw new BusinessException(Status.WARN_PERFORMANCE_ISSUE, "exception.business.beanUtils.buildTree.bindSelf", node.getClass().getSimpleName(), nodeId);
+                throw new BusinessException(ResultCode.WARN_PERFORMANCE_ISSUE, "exception.business.beanUtils.buildTree.bindSelf", node.getClass().getSimpleName(), nodeId);
             }
             parentId2ListMap.computeIfAbsent(parentId, k -> new ArrayList<>()).add(node);
         }

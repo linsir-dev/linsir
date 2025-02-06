@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.helper.ServiceAdaptor;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
 import com.linsir.core.mybatis.binding.query.dynamic.AnnoJoiner;
@@ -99,7 +100,7 @@ public class JoinsBinder {
                 return iService.count(queryWrapper);
             }
             else{
-                throw new InvalidUsageException("单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
             }
         }
         long begin = System.currentTimeMillis();
@@ -133,7 +134,7 @@ public class JoinsBinder {
                 return ServiceAdaptor.queryList(iService, (QueryWrapper)queryWrapper, pagination, entityClazz);
             }
             else{
-                throw new InvalidUsageException("单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"单表查询对象无BaseService/IService实现: {}", entityClazz.getSimpleName());
             }
         }
         long begin = System.currentTimeMillis();

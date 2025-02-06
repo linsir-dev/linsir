@@ -18,6 +18,7 @@ package com.linsir.core.mybatis.handler;
 import com.baomidou.mybatisplus.core.metadata.TableInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
 import com.baomidou.mybatisplus.extension.plugins.handler.MultiDataPermissionHandler;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.data.access.DataAccessAnnoCache;
 import com.linsir.core.mybatis.data.access.DataScopeManager;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
@@ -73,7 +74,7 @@ public class DataAccessControlHandler implements MultiDataPermissionHandler {
                     if(V.notEmpty(entityClasses)) {
                         for (Class<?> entityCls : entityClasses) {
                             if(entityClassToPermissionMap.containsKey(entityCls)) {
-                                throw new InvalidUsageException("多个数据权限拦截实现类作用于Entity: {}，请检查！", entityCls.getName());
+                                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"多个数据权限拦截实现类作用于Entity: {}，请检查！", entityCls.getName());
                             }
                             entityClassToPermissionMap.put(entityCls, protectionHandler);
                             log.info("缓存 Entity: {} 与数据权限拦截实现类：{} 对应关系", entityCls.getName(), protectionHandler.getClass().getName());

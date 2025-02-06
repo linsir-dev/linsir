@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.cache;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
@@ -91,7 +92,7 @@ public class DynamicRedisCacheManager extends SimpleCacheManager implements Base
     public void putCacheObj(String cacheName, Object objKey, Object obj) {
         Cache cache = redisCacheManager.getCache(cacheName);
         if(cache == null) {
-            throw new InvalidUsageException("无法获取cache：{}，请检查是否初始化", cacheName);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法获取cache：{}，请检查是否初始化", cacheName);
         }
         if(log.isDebugEnabled()){
             log.debug("缓存: {} 新增-> {}", cacheName, objKey);
@@ -103,7 +104,7 @@ public class DynamicRedisCacheManager extends SimpleCacheManager implements Base
     public void removeCacheObj(String cacheName, Object objKey) {
         Cache cache = redisCacheManager.getCache(cacheName);
         if(cache == null) {
-            throw new InvalidUsageException("无法获取cache：{}，请检查是否初始化", cacheName);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"无法获取cache：{}，请检查是否初始化", cacheName);
         }
         if(log.isDebugEnabled()){
             log.debug("缓存: {} 移除-> {}", cacheName, objKey);

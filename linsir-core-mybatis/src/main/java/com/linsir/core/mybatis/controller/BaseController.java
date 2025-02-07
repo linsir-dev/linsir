@@ -67,33 +67,33 @@ public class BaseController {
 		String url = request.getRequestURI();
 
 		switch (logType) {
-			case 1:{
+			case 1:
 				log.info("请求url:{},正在进行登陆",url);
-			};
-			case 2:{
+				break;
+
+			case 2:
 				log.info("请求url:{},正在进行操作",url);
-			};
-			case 3:{
+				break;
+			case 3:
 				log.info("请求url:{},正在进行查询",url);
-			};
-			case 4:{
+				break;
+			case 4:
 				log.info("请求url:{},正在进行添加",url);
-			};
-			case 5:{
+				break;
+			case 5:
 				log.info("请求url:{},正在进行更新",url);
-			};
-			case 6:{
+				break;
+			case 6:
 				log.info("请求url:{},正在进行删除",url);
-			};
-			case 7:{
+				break;
+			case 7:
 				log.info("请求url:{},正在进行导入",url);
-			};
-			case 8:{
+				break;
+			case 8:
 				log.info("请求url:{},正在进行导出",url);
-			};
-			default:{
+				break;
+			default:
 				log.info("请求url:{},正在进行",url);
-			}
 		}
 		R result = null;
 		try {

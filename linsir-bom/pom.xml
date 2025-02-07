@@ -5,8 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
-        <!--兼容mybatis 特意升级 springboot 到 3.4.1-->
+        <version>3.2.4</version>
         <relativePath/>
     </parent>
 
@@ -219,11 +218,6 @@
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql-connector-j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>jakarta.validation</groupId>
-                <artifactId>jakarta.validation-api</artifactId>
-                <version>${jakarta.validation-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>

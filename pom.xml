@@ -15,8 +15,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!--https://sca.aliyun.com/docs/2023/overview/version-explain/?spm=7145af80.1ef41eac.0.0.78ff2d5bUNOQa3-->
-    <spring.cloud.alibaba.version>2023.0.1.0</spring.cloud.alibaba.version>
-    <spring.cloud.version>2023.0.1</spring.cloud.version>
+    <spring.cloud.alibaba.version>2023.0.3.2</spring.cloud.alibaba.version>
+    <spring.cloud.version>2024.0.0</spring.cloud.version>
     <spring.boot.version>3.4.1</spring.boot.version>
     <!--兼容mybatis 特意升级 springboot 到 3.4.1-->
     <!--Spring Cloud Starter Netflix Hystrix-->
@@ -39,7 +39,6 @@
       <module>linsir-core-auto</module>
       <module>linsir-core-launch</module>
       <module>linsir-core-log4j2</module>
-      <module>linsir-core-boot</module>
       <module>linsir-core-knife4j</module>
       <module>linsir-core-log</module>
       <module>linsir-core-cloud</module>

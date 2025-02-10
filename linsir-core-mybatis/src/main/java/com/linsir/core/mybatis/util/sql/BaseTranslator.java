@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.util.sql;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.BusinessException;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.S;
@@ -58,7 +59,7 @@ public abstract class BaseTranslator {
                 otherStatements.addAll(this.translateInsertValues(stmt));
             }
             else if(V.notEmpty(stmt)){
-                throw new InvalidUsageException("暂不支持该SQL翻译：{}", stmt);
+                throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"暂不支持该SQL翻译：{}", stmt);
             }
         });
         log.debug("转换初始化SQL：{}", otherStatements);
@@ -169,7 +170,7 @@ public abstract class BaseTranslator {
 
         Map<String, String> col2TypeMap = table2ColumnTypeMap.get(table);
         if(col2TypeMap == null) {
-            throw new BusinessException("exception.business.baseTranslator.translateInsertValues.noCache", table);
+            throw new BusinessException(ResultCode.FAIL_EXCEPTION,"exception.business.baseTranslator.translateInsertValues.noCache", table);
         }
         String suffix = S.substringAfter(insertSql, "VALUES");
         while (S.contains(suffix, "(")) {

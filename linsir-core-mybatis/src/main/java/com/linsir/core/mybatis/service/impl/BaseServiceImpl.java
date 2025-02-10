@@ -33,6 +33,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.ChainWrappers;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.Binder;
 import com.linsir.core.mybatis.binding.JoinsBinder;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
@@ -53,7 +54,6 @@ import com.linsir.core.mybatis.service.BaseService;
 import com.linsir.core.mybatis.util.*;
 import com.linsir.core.mybatis.vo.LabelValue;
 import com.linsir.core.mybatis.vo.Pagination;
-import com.linsir.core.mybatis.vo.Status;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -444,7 +444,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
 		}
 		// 上级设置为自身，抛出异常
 		if(V.equals(treeEntity.getParentId(), treeEntity.getId())) {
-			throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.baseServiceImpl.fillTreeNodeParentPath.message");
+			throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.baseServiceImpl.fillTreeNodeParentPath.message");
 		}
 		BaseTreeEntity parentNode = (BaseTreeEntity) getEntity(treeEntity.getParentId());
 		if(parentNode != null) {
@@ -520,7 +520,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
 		Class<R> middleTableClass = (Class<R>) lambdaMeta.getInstantiatedClass();
 		EntityInfoCache entityInfo = BindingCacheManager.getEntityInfoByClass(middleTableClass);
 		if (entityInfo == null) {
-			throw new InvalidUsageException("未找到 {} 的 Service 或 Mapper 定义！", middleTableClass.getName());
+			throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"未找到 {} 的 Service 或 Mapper 定义！", middleTableClass.getName());
 		}
 		boolean isExistPk = entityInfo.getIdColumn() != null;
 
@@ -594,7 +594,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
                 }
             } catch (Exception e) {
 				log.error("新增关联异常：", e);
-                throw new BusinessException(Status.FAIL_EXCEPTION);
+                throw new BusinessException(ResultCode.FAIL_EXCEPTION);
             }
             if (iService != null) {
                 if (iService instanceof BaseService) {
@@ -774,7 +774,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
 		if(BaseTreeEntity.class.isAssignableFrom(getEntityClass())) {
 			QueryWrapper<T> wrapper = new QueryWrapper<T>().eq(Cons.ColumnName.parent_id.name(), id);
 			if(exists(wrapper)) {
-				throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.baseServiceImpl.deleteEntity.message");
+				throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.baseServiceImpl.deleteEntity.message");
 			}
 		}
 		this.beforeDelete(id);
@@ -917,7 +917,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
 			query = ((LambdaQueryWrapper) queryWrapper);
 		}
 		else {
-			throw new InvalidUsageException("不支持的Wrapper类型：{}", (queryWrapper == null ? "null" : queryWrapper.getClass().getSimpleName()));
+			throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"不支持的Wrapper类型：{}", (queryWrapper == null ? "null" : queryWrapper.getClass().getSimpleName()));
 		}
 		// 如果是动态join，则调用JoinsBinder
 		query.select(getterFn);
@@ -1003,7 +1003,7 @@ public class BaseServiceImpl<M extends BaseCrudMapper<T>, T> extends ServiceImpl
 	@Override
 	public boolean isValueUnique(String field, Object value, Serializable id) {
 		if (V.isEmpty(value)) {
-			throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.baseServiceImpl.isValueUnique.message");
+			throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.baseServiceImpl.isValueUnique.message");
 		}
 		String column = getColumnByField(field);
 		QueryWrapper<Object> wrapper = Wrappers.query().eq(column, value);

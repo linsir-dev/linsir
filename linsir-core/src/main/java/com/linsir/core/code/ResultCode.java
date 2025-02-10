@@ -12,6 +12,10 @@ package com.linsir.core.code;
  */
 public enum ResultCode implements ICode,Cloneable{
 
+    /*默认ok*/
+    OK(0, "status.ok.message",Boolean.TRUE),
+
+
     /*http状态返回代码 1xx（临时响应）*/
     /*继续*/
     CONTINUE(100,"请求者应当继续提出请求。返回此代码表示已收到请求的第一部分，正在等待其余部分。",Boolean.FALSE),
@@ -19,6 +23,9 @@ public enum ResultCode implements ICode,Cloneable{
     SWITCHING_PROTOCOL(101,"请求者已要求服务器切换协议，服务器已确认并准备切换。",Boolean.FALSE),
     /*有潜在的性能问题*/
     WARN_PERFORMANCE_ISSUE(1001, "潜在的性能问题",Boolean.FALSE),
+    /*部分成功*/
+    WARN_PARTIAL_SUCCESS(1001, "status.warn_partial_success.message",Boolean.FALSE),
+
     /*---------------------------------------*/
 
 

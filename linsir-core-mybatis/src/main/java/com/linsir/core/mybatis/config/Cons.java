@@ -301,16 +301,16 @@ public class Cons {
     /**
      * 字典的缓存key
      */
-    public static String CACHE_NAME_DICTIONARY = "diboot:dictionary";
+    public static String CACHE_NAME_DICTIONARY = "linsir:dictionary";
 
     /**
      * 国际化缓存
      */
-    public static String CACHE_NAME_I18N = "diboot:i18n";
+    public static String CACHE_NAME_I18N = "linsir:i18n";
 
     /**
      * 系统配置缓存
      */
-    public static String CACHE_NAME_SYSTEM_CONFIG = "diboot:system-config";
+    public static String CACHE_NAME_SYSTEM_CONFIG = "linsir:system-config";
 
 }

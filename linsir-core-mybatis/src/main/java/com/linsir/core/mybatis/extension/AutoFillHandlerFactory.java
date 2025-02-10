@@ -15,6 +15,7 @@
  */
 package com.linsir.core.mybatis.extension;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.ContextHolder;
 import com.linsir.core.mybatis.util.S;
@@ -49,7 +50,7 @@ public class AutoFillHandlerFactory {
         initIfRequired();
         AutoFillHandler fillHandler = HANDLER_CACHE_MAP.get(handlerId);
         if (fillHandler == null) {
-            throw new InvalidUsageException("未找到自动赋值处理器 AutoFillHandler: {} 的实现类，请检查！", handlerId);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"未找到自动赋值处理器 AutoFillHandler: {} 的实现类，请检查！", handlerId);
         }
         return fillHandler;
     }

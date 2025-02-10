@@ -18,6 +18,7 @@ package com.linsir.core.mybatis.binding.parser;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.annotation.*;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.query.BindQuery;
@@ -175,7 +176,7 @@ public class ParserCache {
     public static BaseMapper getMapperInstance(Class<?> entityClass){
         BaseMapper mapper = BindingCacheManager.getMapperByClass(entityClass);
         if(mapper == null){
-            throw new InvalidUsageException("未找到 {} 的Mapper定义！", entityClass.getName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"未找到 {} 的Mapper定义！", entityClass.getName());
         }
         return mapper;
     }

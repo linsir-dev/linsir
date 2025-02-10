@@ -16,6 +16,7 @@
 package com.linsir.core.mybatis.util;
 
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.sql.*;
 import org.apache.ibatis.session.SqlSession;
@@ -107,7 +108,7 @@ public class SqlFileInitializer {
             return new SqliteTranslator().translate(sqlStatements);
         }
         else {
-            throw new InvalidUsageException("暂不支持 {} 数据库自动初始化", dbType);
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"暂不支持 {} 数据库自动初始化", dbType);
         }
     }
 

@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.toolkit.JdbcUtils;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.binding.cache.BindingCacheManager;
 import com.linsir.core.mybatis.binding.parser.EntityInfoCache;
 import com.linsir.core.mybatis.binding.parser.ParserCache;
@@ -86,7 +87,7 @@ public class ContextHolder implements ApplicationContextAware, ApplicationListen
             APPLICATION_CONTEXT = ContextLoader.getCurrentWebApplicationContext();
         }
         if(APPLICATION_CONTEXT == null){
-            log.warn("无法获取ApplicationContext，请确保ComponentScan扫描路径包含com.diboot包路径，并在Spring初始化之后调用接口!");
+            log.warn("无法获取ApplicationContext，请确保ComponentScan扫描路径包含com.linsir包路径，并在Spring初始化之后调用接口!");
             new InvalidUsageException("检查调用时机").printStackTrace();
         }
         return APPLICATION_CONTEXT;
@@ -113,7 +114,7 @@ public class ContextHolder implements ApplicationContextAware, ApplicationListen
             return null;
         }
         if(clazzInstances.size() > 1){
-            throw new InvalidUsageException("getBean({}.class) 识别到多个实例，请检查调用！", clazz.getSimpleName());
+            throw new InvalidUsageException(ResultCode.INVALID_OPERATION,"getBean({}.class) 识别到多个实例，请检查调用！", clazz.getSimpleName());
         }
         return clazzInstances.get(0);
     }
@@ -257,7 +258,7 @@ public class ContextHolder implements ApplicationContextAware, ApplicationListen
             }
         }
         if(jdbcUrl == null){
-            String urlConfigItem = environment.getProperty("diboot.datasource.url.config");
+            String urlConfigItem = environment.getProperty("linsir.datasource.url.config");
             if(urlConfigItem != null){
                 jdbcUrl = environment.getProperty(urlConfigItem);
             }

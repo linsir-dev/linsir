@@ -18,6 +18,7 @@ package com.linsir.core.mybatis.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.cache.DictionaryCacheManager;
 import com.linsir.core.mybatis.config.Cons;
 import com.linsir.core.mybatis.entity.Dictionary;
@@ -31,7 +32,6 @@ import com.linsir.core.mybatis.util.S;
 import com.linsir.core.mybatis.util.V;
 import com.linsir.core.mybatis.vo.DictionaryVO;
 import com.linsir.core.mybatis.vo.LabelValue;
-import com.linsir.core.mybatis.vo.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -181,7 +181,7 @@ public class DictionaryServiceExtImpl extends BaseServiceImpl<DictionaryMapper, 
             boolean success = super.createEntities(children);
             if(!success){
                 log.warn("新建数据字典子项失败， type= {}", dictVO.getType());
-                throw new BusinessException(Status.FAIL_OPERATION, "exception.business.dictionaryService.createDictAndChildren.message", dictVO.getType());
+                throw new BusinessException(ResultCode.FAIL_OPERATION, "exception.business.dictionaryService.createDictAndChildren.message", dictVO.getType());
             }
         }
         return true;
@@ -238,13 +238,13 @@ public class DictionaryServiceExtImpl extends BaseServiceImpl<DictionaryMapper, 
                     Optional<Dictionary> oldDictOpt = oldDictList.stream().filter(d->d.getId().equals(dict.getId())).findFirst();
                     if(oldDictOpt.isPresent() && !updateEntity(oldDictOpt.get().getItemName(), dict)){
                         log.warn("更新字典子项失败，itemName={}", dict.getItemName());
-                        throw new BusinessException(Status.FAIL_EXCEPTION, "exception.business.dictionaryService.updateItem");
+                        throw new BusinessException(ResultCode.FAIL_EXCEPTION, "exception.business.dictionaryService.updateItem");
                     }
                 }
                 else{
                     if(!super.createEntity(dict)){
                         log.warn("新建字典子项失败，itemName={}", dict.getItemName());
-                        throw new BusinessException(Status.FAIL_EXCEPTION, "exception.business.dictionaryService.createItem");
+                        throw new BusinessException(ResultCode.FAIL_EXCEPTION, "exception.business.dictionaryService.createItem");
                     }
                 }
             }
@@ -254,7 +254,7 @@ public class DictionaryServiceExtImpl extends BaseServiceImpl<DictionaryMapper, 
                 if(!dictItemIds.contains(dict.getId())){
                     if(!super.deleteEntity(dict.getId())){
                         log.warn("删除子数据字典失败，itemName={}", dict.getItemName());
-                        throw new BusinessException(Status.FAIL_EXCEPTION, "exception.business.dictionaryService.deleteItem");
+                        throw new BusinessException(ResultCode.FAIL_EXCEPTION, "exception.business.dictionaryService.deleteItem");
                     }
                 }
             }
@@ -286,9 +286,9 @@ public class DictionaryServiceExtImpl extends BaseServiceImpl<DictionaryMapper, 
         Set<String> itemNames = new HashSet<>(), itemValues = new HashSet<>();
         dictList.forEach(dict -> {
             if (itemValues.contains(dict.getItemValue())) {
-                throw new BusinessException(Status.FAIL_OPERATION, "exception.business.dictionaryService.repeatItemValue", dict.getItemValue());
+                throw new BusinessException(ResultCode.FAIL_OPERATION, "exception.business.dictionaryService.repeatItemValue", dict.getItemValue());
             } else if (itemNames.contains(dict.getItemName())) {
-                throw new BusinessException(Status.FAIL_OPERATION, "exception.business.dictionaryService.repeatItemName", dict.getItemName());
+                throw new BusinessException(ResultCode.FAIL_OPERATION, "exception.business.dictionaryService.repeatItemName", dict.getItemName());
             }
             itemNames.add(dict.getItemName());
             itemValues.add(dict.getItemValue());

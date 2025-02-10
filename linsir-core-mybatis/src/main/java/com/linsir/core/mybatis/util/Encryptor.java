@@ -167,7 +167,7 @@ public class Encryptor {
 	 * 默认加密seed（可通过配置文件）
 	 */
 	public static String getDefaultKey(){
-		String defaultKey = BaseConfig.getProperty("diboot.encryptor.seed");
-		return V.notEmpty(defaultKey)? defaultKey : "DibootV3";
+		String defaultKey = BaseConfig.getProperty("linsir.encryptor.seed");
+		return V.notEmpty(defaultKey)? defaultKey : "Linsir";
 	}
 }

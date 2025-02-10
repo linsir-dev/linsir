@@ -31,7 +31,7 @@ import java.lang.annotation.*;
 public @interface BindI18n {
 
     /**
-     * 资源标识 {@link com.diboot.core.entity.I18nConfig#getCode()}
+     * 资源标识 {@link com.lisnir.core.mybatis.entity.I18nConfig#getCode()}
      */
     String value();
 

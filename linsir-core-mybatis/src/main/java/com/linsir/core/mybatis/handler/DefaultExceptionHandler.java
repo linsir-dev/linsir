@@ -15,13 +15,13 @@
  */
 package com.linsir.core.mybatis.handler;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.event.ExceptionEvent;
 import com.linsir.core.mybatis.exception.BusinessException;
 import com.linsir.core.mybatis.exception.InvalidUsageException;
 import com.linsir.core.mybatis.util.HttpHelper;
 import com.linsir.core.mybatis.util.JSON;
 import com.linsir.core.mybatis.util.V;
-import com.linsir.core.mybatis.vo.Status;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -65,7 +65,7 @@ public class DefaultExceptionHandler {
         }
         Map<String, Object> map = new HashMap<>(8);
         if (br != null && br.hasErrors()) {
-            map.put("code", Status.FAIL_VALIDATION.code());
+            map.put("code", ResultCode.FAIL_VALIDATION.getCode());
             String validateErrorMsg = V.getBindingError(br);
             map.put("msg", validateErrorMsg);
             log.warn("数据校验失败, {}: {}", br.getObjectName(), validateErrorMsg);

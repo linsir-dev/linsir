@@ -15,10 +15,10 @@
  */
 package com.linsir.core.mybatis.util;
 
+import com.linsir.core.code.ResultCode;
 import com.linsir.core.mybatis.data.query.CriteriaItem;
 import com.linsir.core.mybatis.data.query.QueryCondition;
 import com.linsir.core.mybatis.exception.BusinessException;
-import com.linsir.core.mybatis.vo.Status;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -377,7 +377,7 @@ public class V {
         }
         for (String param : paramValues) {
             if (!V.isValidSqlParam(param)) {
-                throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.v.securityCheck.param", param);
+                throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.v.securityCheck.param", param);
             }
         }
     }
@@ -391,7 +391,7 @@ public class V {
         }
         for (Object param : paramValues) {
             if (!V.isValidSqlParam(param)) {
-                throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.v.securityCheck.param", param);
+                throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.v.securityCheck.param", param);
             }
         }
     }
@@ -415,7 +415,7 @@ public class V {
                 String value = (String)entry.getValue();
                 if(SQL_INJECT_PATTERN.matcher(value.toLowerCase()).find()){
                     log.warn("非法的参数值: {}", entry.getValue());
-                    throw new BusinessException(Status.FAIL_VALIDATION, "exception.business.v.securityCheck.paramValue", entry.getValue());
+                    throw new BusinessException(ResultCode.FAIL_VALIDATION, "exception.business.v.securityCheck.paramValue", entry.getValue());
                 }
             }
         }

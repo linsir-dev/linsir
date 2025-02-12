@@ -48,8 +48,15 @@ public class LinsirTenantLineHandler implements TenantLineHandler {
         boolean isIgnoreTable = false;
         if (properties.getIgnoreTables()!=null)
         {
+            if (tableName.startsWith("sys_"))
+            {
+                log.info("表{}，以sys_开头,忽略此表", tableName);
+                isIgnoreTable = true;
+            }
+
             if (properties.getIgnoreTables().contains(tableName))
             {
+                log.info("表:{},包含在忽略表内", tableName);
                 isIgnoreTable = true;
             }
         }

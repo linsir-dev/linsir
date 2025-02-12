@@ -59,6 +59,6 @@ public class FillMetaObjectHandler implements MetaObjectHandler {
         if (!user.getUserName().isEmpty()){
             this.strictInsertFill(metaObject, FieldConstant.FieldName.updatedBy.name(), String.class,user.getUserName());
         }
-        this.strictInsertFill(metaObject, FieldConstant.FieldName.updatedTime.name(), LocalDate.class, LocalDate.now());
+        this.strictInsertFill(metaObject, FieldConstant.FieldName.updatedTime.name(), Date.class, new Date());
     }
 }

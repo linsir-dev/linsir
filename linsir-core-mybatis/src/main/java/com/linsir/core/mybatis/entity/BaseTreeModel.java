@@ -2,6 +2,7 @@ package com.linsir.core.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -17,24 +18,13 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class BaseTreeModel extends BaseTreeEntity<String> {
+public class BaseTreeModel extends BaseTreeEntity<Long> {
     private static final long serialVersionUID = 10206L;
 
     /**
-     * 更新时间
+     * 租户ID
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
-    /**
-     * 创建人
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private String createBy;
-
-    /**
-     * 更新人
-     */
-    @TableField(fill = FieldFill.UPDATE)
-    private String updateBy;
+    @JsonIgnore
+    @TableField
+    private String tenantId;
 }

@@ -31,4 +31,6 @@ public class MybatisPlusProperties {
     /*忽略的表，逗号分割开*/
     private String ignoreTables;
 
+    /*数据权限控制标题*/
+    private String scopeManagerTitle;
 }

@@ -16,6 +16,7 @@
  */
 package com.linsir.core.auth;
 
+import com.linsir.core.vo.ExtLabelValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -30,6 +31,9 @@ import java.io.Serializable;
 public class LinsirUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+
+	private Long id;
 	/**
 	 * 客户端id
 	 */
@@ -92,4 +96,7 @@ public class LinsirUser implements Serializable {
 	 */
 	@Schema(name = "用户类型",hidden = true)
 	private String type;
+
+
+	private ExtLabelValue extensionObj;
 }

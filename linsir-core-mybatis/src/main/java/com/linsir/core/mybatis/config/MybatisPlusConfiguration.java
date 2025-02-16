@@ -3,7 +3,9 @@ package com.linsir.core.mybatis.config;
 
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
+import com.linsir.core.mybatis.handler.DataAccessControlHandler;
 import com.linsir.core.mybatis.handler.LinsirTenantLineHandler;
 import com.linsir.core.mybatis.intercept.QueryInterceptor;
 import com.linsir.core.mybatis.plugin.LinsirPaginationInterceptor;
@@ -51,6 +53,8 @@ public class MybatisPlusConfiguration {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 配置租户拦截器
         interceptor.addInnerInterceptor(tenantLineInnerInterceptor);
+        // 数据权限拦截器
+        interceptor.addInnerInterceptor(new DataPermissionInterceptor(new DataAccessControlHandler()));
         // 配置分页拦截器
         LinsirPaginationInterceptor paginationInterceptor = new LinsirPaginationInterceptor();
         // 配置自定义查询拦截器
@@ -65,6 +69,10 @@ public class MybatisPlusConfiguration {
         return interceptor;
     }
 
+    @Bean
+    public DataAccessControlHandler dataAccessControlHandler() {
+        return new DataAccessControlHandler();
+    }
     /**
      * sql 日志
      *

@@ -24,7 +24,7 @@ package com.linsir.core.launch.constant;
 public interface TokenConstant {
 
 	String AVATAR = "avatar";
-	String HEADER = "Blade-Auth";
+	String HEADER = "Linsir-Auth";
 	String BEARER = "bearer";
 	String ACCESS_TOKEN = "access_token";
 	String REFRESH_TOKEN = "refresh_token";

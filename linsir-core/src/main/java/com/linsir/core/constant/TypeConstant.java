@@ -1,5 +1,8 @@
 package com.linsir.core.constant;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * description：类型相关
  * author     ：linsir
@@ -237,4 +240,109 @@ public interface TypeConstant {
      * 系统配置缓存
      */
     public static String CACHE_NAME_SYSTEM_CONFIG = "linsir:system-config";
+
+
+    /**
+     * 数据字典类型定义
+     */
+    public enum DICTTYPE{
+        DATA_PERMISSION_TYPE,
+        AUTH_TYPE,
+        ACCOUNT_STATUS,
+        USER_STATUS,
+        ORG_TYPE,
+        RESOURCE_TYPE,
+        POSITION_GRADE,
+        GENDER,
+        RESOURCE_CODE
+    }
+
+    /**
+     * 字典编码 - 数据权限类型
+     */
+    public enum DICTCODE_DATA_PERMISSION_TYPE{
+        SELF,
+        SELF_AND_SUB,
+        DEPT,
+        DEPT_AND_SUB,
+        ALL
+    }
+
+    /**
+     * 字典编码 - 认证方式
+     */
+    public enum DICTCODE_AUTH_TYPE{
+        PWD,
+        SSO,
+        OAuth2,
+        CAS_SERVER,
+        WX_MP,
+        WX_CP,
+        OTHER
+    }
+
+    /**
+     * 字典编码 - 账号状态
+     */
+    public enum DICTCODE_ACCOUNT_STATUS{
+        A,
+        L,
+        I
+    }
+
+    /**
+     * 字典编码 - 用户状态
+     */
+    public enum DICTCODE_USER_STATUS{
+        A,
+        L,
+        I
+    }
+
+    /**
+     * 字典编码 - 权限状态
+     */
+    public enum DICTCODE_RESOURCE_STATUS{
+        A,
+        I
+    }
+
+    /**
+     * 字典编码 - 组织类型
+     */
+    public enum DICTCODE_ORG_TYPE{
+        COMP,
+        DEPT
+    }
+
+    /**
+     * 字典编码 - 权限类型
+     */
+    public enum DICTCODE_PERMISSION_TYPE{
+        MENU,
+        OPERATION,
+        OTHER
+    }
+
+    /**
+     * 前端权限类型
+     */
+    public enum RESOURCE_PERMISSION_DISPLAY_TYPE{
+        MODULE,
+        MENU,
+        PERMISSION,
+        IFRAME,
+        OUTSIDE_URL,
+        CATALOGUE
+    }
+
+    /**
+     * 菜单类别列表
+     */
+    public static final List<String> MENU_CATEGORY_LIST = Arrays.asList(
+            RESOURCE_PERMISSION_DISPLAY_TYPE.MENU.name(),
+            RESOURCE_PERMISSION_DISPLAY_TYPE.IFRAME.name(),
+            RESOURCE_PERMISSION_DISPLAY_TYPE.OUTSIDE_URL.name(),
+            RESOURCE_PERMISSION_DISPLAY_TYPE.CATALOGUE.name()
+    );
 }

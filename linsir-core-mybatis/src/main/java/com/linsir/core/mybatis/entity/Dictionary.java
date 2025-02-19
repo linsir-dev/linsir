@@ -126,11 +126,7 @@ public class Dictionary extends BaseEntity<String> {
     @TableField(typeHandler = JacksonTypeHandler.class)
     private Map<String, Object> extension;
 
-    /**
-     * 更新时间
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+
 
     /**
      * 从extdata JSON中提取扩展属性值

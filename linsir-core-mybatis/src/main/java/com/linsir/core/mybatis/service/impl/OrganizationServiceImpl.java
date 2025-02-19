@@ -47,7 +47,7 @@ public class OrganizationServiceImpl extends BaseServiceImpl<OrganizationMapper,
     private void enhanceOrganization(Organization organization) {
 
         //自动生成组织编码
-        Snowflake snowflake = IdUtil.getSnowflake();
+        Snowflake snowflake = IdUtil.getSnowflake(1,1);
         organization.setCode("ZZBM-"+snowflake.nextId());
 
         if (!TypeConstant.TREE_ROOT_ID.equals(organization.getParentId().toString())) {

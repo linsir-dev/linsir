@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Chill
  */
-public class JwtUtil {
+public class JwtUtil extends JWT {
 
 	/**
 	 * token基础配置
@@ -102,6 +102,7 @@ public class JwtUtil {
 		} catch (Exception ex) {
 			return null;
 		}*/
+		/*JWT jwt = super.parse(jsonWebToken);*/
 		return null;
 	}
 
